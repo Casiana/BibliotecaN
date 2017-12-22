@@ -1,0 +1,14 @@
+C:\Users\Carp Ioan\Desktop\Projects\BibliotecaN\BibliotecaN\bin\Debug\BibliotecaN.exe.config
+C:\Users\Carp Ioan\Desktop\Projects\BibliotecaN\BibliotecaN\bin\Debug\BibliotecaN.exe
+C:\Users\Carp Ioan\Desktop\Projects\BibliotecaN\BibliotecaN\bin\Debug\BibliotecaN.pdb
+C:\Users\Carp Ioan\Desktop\Projects\BibliotecaN\BibliotecaN\bin\Debug\EntityFramework.dll
+C:\Users\Carp Ioan\Desktop\Projects\BibliotecaN\BibliotecaN\bin\Debug\EntityFramework.xml
+C:\Users\Carp Ioan\Desktop\Projects\BibliotecaN\BibliotecaN\obj\Debug\BibliotecaN.csprojResolveAssemblyReference.cache
+C:\Users\Carp Ioan\Desktop\Projects\BibliotecaN\BibliotecaN\obj\Debug\BibliotecaN.CreateAccount.resources
+C:\Users\Carp Ioan\Desktop\Projects\BibliotecaN\BibliotecaN\obj\Debug\BibliotecaN.Form1.resources
+C:\Users\Carp Ioan\Desktop\Projects\BibliotecaN\BibliotecaN\obj\Debug\BibliotecaN.Properties.Resources.resources
+C:\Users\Carp Ioan\Desktop\Projects\BibliotecaN\BibliotecaN\obj\Debug\BibliotecaN.csproj.GenerateResource.Cache
+C:\Users\Carp Ioan\Desktop\Projects\BibliotecaN\BibliotecaN\obj\Debug\BibliotecaN.exe
+C:\Users\Carp Ioan\Desktop\Projects\BibliotecaN\BibliotecaN\obj\Debug\BibliotecaN.pdb
+C:\Users\Carp Ioan\Desktop\Projects\BibliotecaN\BibliotecaN\obj\Debug\BibliotecaN.AdministratorForm.resources
+C:\Users\Carp Ioan\Desktop\Projects\BibliotecaN\BibliotecaN\obj\Debug\BibliotecaN.MembruForm.resources
