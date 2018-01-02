@@ -5,6 +5,34 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="BibliotecaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nume" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titlu" Type="nvarchar" MaxLength="50" />
+          <Property Name="Autor" Type="int" />
+          <Property Name="ISBN" Type="nvarchar" MaxLength="50" />
+          <Property Name="Domeniu" Type="int" />
+          <Property Name="Editura" Type="int" />
+          <Property Name="Descriere" Type="nvarchar(max)" />
+          <Property Name="Exemplare" Type="int" Nullable="false" />
+          <Property Name="Imagine" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Domain">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nume" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Person">
           <Key>
             <PropertyRef Name="ID" />
@@ -19,6 +47,13 @@
           <Property Name="Parola" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Rol" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Publisher">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nume" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="ID" />
@@ -26,6 +61,42 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nume" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK_Book_Author">
+          <End Role="Author" Type="Self.Author" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="Autor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_Domain">
+          <End Role="Domain" Type="Self.Domain" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Domain">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="Domeniu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_Publisher">
+          <End Role="Publisher" Type="Self.Publisher" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publisher">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="Editura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Person_Role">
           <End Role="Role" Type="Self.Role" Multiplicity="1" />
           <End Role="Person" Type="Self.Person" Multiplicity="*" />
@@ -39,8 +110,24 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="BibliotecaModelStoreContainer">
+          <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Domain" EntityType="Self.Domain" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Publisher" EntityType="Self.Publisher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Book_Author" Association="Self.FK_Book_Author">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_Domain" Association="Self.FK_Book_Domain">
+            <End Role="Domain" EntitySet="Domain" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_Publisher" Association="Self.FK_Book_Publisher">
+            <End Role="Publisher" EntitySet="Publisher" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
           <AssociationSet Name="FK_Person_Role" Association="Self.FK_Person_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="Person" EntitySet="Person" />
@@ -92,7 +179,100 @@
             <End Role="Role" EntitySet="Roles" />
             <End Role="Person" EntitySet="People" />
           </AssociationSet>
+          <EntitySet Name="Authors" EntityType="BibliotecaModel.Author" />
+          <EntitySet Name="Books" EntityType="BibliotecaModel.Book" />
+          <EntitySet Name="Domains" EntityType="BibliotecaModel.Domain" />
+          <AssociationSet Name="FK_Book_Author" Association="BibliotecaModel.FK_Book_Author">
+            <End Role="Author" EntitySet="Authors" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_Domain" Association="BibliotecaModel.FK_Book_Domain">
+            <End Role="Domain" EntitySet="Domains" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <EntitySet Name="Publishers" EntityType="BibliotecaModel.Publisher" />
+          <AssociationSet Name="FK_Book_Publisher" Association="BibliotecaModel.FK_Book_Publisher">
+            <End Role="Publisher" EntitySet="Publishers" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nume" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Books" Relationship="BibliotecaModel.FK_Book_Author" FromRole="Author" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titlu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Autor" Type="Int32" />
+          <Property Name="ISBN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Domeniu" Type="Int32" />
+          <Property Name="Editura" Type="Int32" />
+          <Property Name="Descriere" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Exemplare" Type="Int32" Nullable="false" />
+          <Property Name="Imagine" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Author" Relationship="BibliotecaModel.FK_Book_Author" FromRole="Book" ToRole="Author" />
+          <NavigationProperty Name="Domain" Relationship="BibliotecaModel.FK_Book_Domain" FromRole="Book" ToRole="Domain" />
+          <NavigationProperty Name="Publisher" Relationship="BibliotecaModel.FK_Book_Publisher" FromRole="Book" ToRole="Publisher" />
+        </EntityType>
+        <EntityType Name="Domain">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nume" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Books" Relationship="BibliotecaModel.FK_Book_Domain" FromRole="Domain" ToRole="Book" />
+        </EntityType>
+        <Association Name="FK_Book_Author">
+          <End Type="BibliotecaModel.Author" Role="Author" Multiplicity="0..1" />
+          <End Type="BibliotecaModel.Book" Role="Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="Autor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_Domain">
+          <End Type="BibliotecaModel.Domain" Role="Domain" Multiplicity="0..1" />
+          <End Type="BibliotecaModel.Book" Role="Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Domain">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="Domeniu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Publisher">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nume" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Books" Relationship="BibliotecaModel.FK_Book_Publisher" FromRole="Publisher" ToRole="Book" />
+        </EntityType>
+        <Association Name="FK_Book_Publisher">
+          <End Type="BibliotecaModel.Publisher" Role="Publisher" Multiplicity="0..1" />
+          <End Type="BibliotecaModel.Book" Role="Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publisher">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="Editura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -119,6 +299,45 @@
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Nume" ColumnName="Nume" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Authors">
+            <EntityTypeMapping TypeName="BibliotecaModel.Author">
+              <MappingFragment StoreEntitySet="Author">
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="BibliotecaModel.Book">
+              <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="Imagine" ColumnName="Imagine" />
+                <ScalarProperty Name="Exemplare" ColumnName="Exemplare" />
+                <ScalarProperty Name="Descriere" ColumnName="Descriere" />
+                <ScalarProperty Name="Editura" ColumnName="Editura" />
+                <ScalarProperty Name="Domeniu" ColumnName="Domeniu" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="Autor" ColumnName="Autor" />
+                <ScalarProperty Name="Titlu" ColumnName="Titlu" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Domains">
+            <EntityTypeMapping TypeName="BibliotecaModel.Domain">
+              <MappingFragment StoreEntitySet="Domain">
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Publishers">
+            <EntityTypeMapping TypeName="BibliotecaModel.Publisher">
+              <MappingFragment StoreEntitySet="Publisher">
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

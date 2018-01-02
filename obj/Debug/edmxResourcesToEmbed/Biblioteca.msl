@@ -24,5 +24,44 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Authors">
+      <EntityTypeMapping TypeName="BibliotecaModel.Author">
+        <MappingFragment StoreEntitySet="Author">
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Books">
+      <EntityTypeMapping TypeName="BibliotecaModel.Book">
+        <MappingFragment StoreEntitySet="Book">
+          <ScalarProperty Name="Imagine" ColumnName="Imagine" />
+          <ScalarProperty Name="Exemplare" ColumnName="Exemplare" />
+          <ScalarProperty Name="Descriere" ColumnName="Descriere" />
+          <ScalarProperty Name="Editura" ColumnName="Editura" />
+          <ScalarProperty Name="Domeniu" ColumnName="Domeniu" />
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+          <ScalarProperty Name="Autor" ColumnName="Autor" />
+          <ScalarProperty Name="Titlu" ColumnName="Titlu" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Domains">
+      <EntityTypeMapping TypeName="BibliotecaModel.Domain">
+        <MappingFragment StoreEntitySet="Domain">
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Publishers">
+      <EntityTypeMapping TypeName="BibliotecaModel.Publisher">
+        <MappingFragment StoreEntitySet="Publisher">
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
