@@ -15,7 +15,7 @@
     <Property Name="Titlu" Type="nvarchar" MaxLength="50" />
     <Property Name="Autor" Type="int" />
     <Property Name="ISBN" Type="nvarchar" MaxLength="50" />
-    <Property Name="Domeniu" Type="int" />
+    <Property Name="Domeniu" Type="int" Nullable="false" />
     <Property Name="Editura" Type="int" />
     <Property Name="Descriere" Type="nvarchar(max)" />
     <Property Name="Exemplare" Type="int" Nullable="false" />
@@ -27,6 +27,16 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nume" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Lends">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Book_ID" Type="int" Nullable="false" />
+    <Property Name="Person_ID" Type="int" Nullable="false" />
+    <Property Name="Data_Imprumut" Type="datetime" Nullable="false" />
+    <Property Name="Data_Retur" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Person">
     <Key>
@@ -69,7 +79,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Book_Domain">
-    <End Role="Domain" Type="Self.Domain" Multiplicity="0..1" />
+    <End Role="Domain" Type="Self.Domain" Multiplicity="1" />
     <End Role="Book" Type="Self.Book" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Domain">
@@ -92,6 +102,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Lends_Book">
+    <End Role="Book" Type="Self.Book" Multiplicity="1" />
+    <End Role="Lends" Type="Self.Lends" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Lends">
+        <PropertyRef Name="Book_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lends_Person">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Lends" Type="Self.Lends" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Lends">
+        <PropertyRef Name="Person_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Person_Role">
     <End Role="Role" Type="Self.Role" Multiplicity="1" />
     <End Role="Person" Type="Self.Person" Multiplicity="*" />
@@ -108,6 +142,7 @@
     <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Domain" EntityType="Self.Domain" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lends" EntityType="Self.Lends" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Publisher" EntityType="Self.Publisher" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
@@ -122,6 +157,14 @@
     <AssociationSet Name="FK_Book_Publisher" Association="Self.FK_Book_Publisher">
       <End Role="Publisher" EntitySet="Publisher" />
       <End Role="Book" EntitySet="Book" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lends_Book" Association="Self.FK_Lends_Book">
+      <End Role="Book" EntitySet="Book" />
+      <End Role="Lends" EntitySet="Lends" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lends_Person" Association="Self.FK_Lends_Person">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Lends" EntitySet="Lends" />
     </AssociationSet>
     <AssociationSet Name="FK_Person_Role" Association="Self.FK_Person_Role">
       <End Role="Role" EntitySet="Role" />

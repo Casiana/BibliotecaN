@@ -14,11 +14,16 @@ namespace BibliotecaN
     
     public partial class Book
     {
+        public Book()
+        {
+            this.Lends = new HashSet<Lend>();
+        }
+    
         public int ID { get; set; }
         public string Titlu { get; set; }
         public Nullable<int> Autor { get; set; }
         public string ISBN { get; set; }
-        public Nullable<int> Domeniu { get; set; }
+        public int Domeniu { get; set; }
         public Nullable<int> Editura { get; set; }
         public string Descriere { get; set; }
         public int Exemplare { get; set; }
@@ -27,5 +32,6 @@ namespace BibliotecaN
         public virtual Author Author { get; set; }
         public virtual Domain Domain { get; set; }
         public virtual Publisher Publisher { get; set; }
+        public virtual ICollection<Lend> Lends { get; set; }
     }
 }

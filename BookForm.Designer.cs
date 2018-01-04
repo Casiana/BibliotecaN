@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.titluBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.isbnBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.descriereBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.exemBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -57,12 +57,12 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Titlu";
             // 
-            // textBox1
+            // titluBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(226, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(156, 22);
-            this.textBox1.TabIndex = 1;
+            this.titluBox.Location = new System.Drawing.Point(226, 29);
+            this.titluBox.Name = "titluBox";
+            this.titluBox.Size = new System.Drawing.Size(156, 22);
+            this.titluBox.TabIndex = 1;
             // 
             // label2
             // 
@@ -73,12 +73,12 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Domeniu";
             // 
-            // textBox3
+            // isbnBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(226, 99);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(156, 22);
-            this.textBox3.TabIndex = 5;
+            this.isbnBox.Location = new System.Drawing.Point(226, 99);
+            this.isbnBox.Name = "isbnBox";
+            this.isbnBox.Size = new System.Drawing.Size(156, 22);
+            this.isbnBox.TabIndex = 5;
             // 
             // label3
             // 
@@ -98,12 +98,12 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Autor";
             // 
-            // textBox5
+            // descriereBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(226, 209);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(156, 22);
-            this.textBox5.TabIndex = 15;
+            this.descriereBox.Location = new System.Drawing.Point(226, 209);
+            this.descriereBox.Name = "descriereBox";
+            this.descriereBox.Size = new System.Drawing.Size(156, 22);
+            this.descriereBox.TabIndex = 15;
             // 
             // label5
             // 
@@ -114,12 +114,12 @@
             this.label5.TabIndex = 14;
             this.label5.Text = "Descriere";
             // 
-            // textBox6
+            // exemBox
             // 
-            this.textBox6.Location = new System.Drawing.Point(226, 244);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(156, 22);
-            this.textBox6.TabIndex = 13;
+            this.exemBox.Location = new System.Drawing.Point(226, 244);
+            this.exemBox.Name = "exemBox";
+            this.exemBox.Size = new System.Drawing.Size(156, 22);
+            this.exemBox.TabIndex = 13;
             // 
             // label6
             // 
@@ -197,6 +197,7 @@
             this.button2.TabIndex = 20;
             this.button2.Text = "Creare carte";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // BookForm
             // 
@@ -208,18 +209,18 @@
             this.Controls.Add(this.publisher_combo);
             this.Controls.Add(this.domain_combo);
             this.Controls.Add(this.autor_combo);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.descriereBox);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.exemBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.isbnBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.titluBox);
             this.Controls.Add(this.label1);
             this.Name = "BookForm";
             this.Text = "BookForm";
@@ -231,14 +232,14 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox titluBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox isbnBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox descriereBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox exemBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label7;

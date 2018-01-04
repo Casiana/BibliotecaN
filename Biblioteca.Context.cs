@@ -28,8 +28,9 @@ namespace BibliotecaN
         public DbSet<Person> People { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Author> Authors { get; set; }
-        public DbSet<Book> Books { get; set; }
         public DbSet<Domain> Domains { get; set; }
         public DbSet<Publisher> Publishers { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Lend> Lends { get; set; }
     }
 }

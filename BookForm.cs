@@ -54,40 +54,47 @@ namespace BibliotecaN
             }
         }
 
-        public string ImageToBase64(Image image,
-            System.Drawing.Imaging.ImageFormat format)
-        {
-            using (MemoryStream ms = new MemoryStream())
-            {
-                // Convert Image to byte[]
-                image.Save(ms, format);
-                byte[] imageBytes = ms.ToArray();
-
-                // Convert byte[] to Base64 String
-                string base64String = Convert.ToBase64String(imageBytes);
-                return base64String;
-            }
-        }
-
-        public Image Base64ToImage(string base64String)
-        {
-            // Convert Base64 String to byte[]
-            byte[] imageBytes = Convert.FromBase64String(base64String);
-            MemoryStream ms = new MemoryStream(imageBytes, 0,
-              imageBytes.Length);
-
-            // Convert byte[] to Image
-            ms.Write(imageBytes, 0, imageBytes.Length);
-            Image image = Image.FromStream(ms, true);
-            return image;
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             OpenFileDialog open = new OpenFileDialog();
             // image filters  
             open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
-            
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (var db = new BibliotecaEntities())
+            {
+                var book = new Book();
+                book.Titlu = titluBox.Text;
+                book.ISBN = isbnBox.Text;
+                book.Exemplare = Int32.Parse(exemBox.Text);
+                book.Descriere = descriereBox.Text;
+                var domeniu_text = domain_combo.SelectedItem.ToString();
+                var autor_text = autor_combo.SelectedItem.ToString();
+                var editura_text = publisher_combo.SelectedItem.ToString();
+                var domeniu = (from d in db.Domains
+                               where d.Nume == domeniu_text
+                               select d).FirstOrDefault();
+                book.Domain = domeniu;
+
+                var autor = (from a in db.Authors
+                             where a.Nume == autor_text
+                             select a).FirstOrDefault();
+                book.Author = autor;
+
+                var editura = (from p in db.Publishers
+                               where p.Nume == editura_text
+                               select p).FirstOrDefault();
+                book.Publisher = editura;
+
+                db.Books.Add(book);
+                db.SaveChanges();
+                this.Close();
+                MessageBox.Show("Carte creata cu success!");
+            }
         }
     }
 }

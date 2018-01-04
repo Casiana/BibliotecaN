@@ -14,6 +14,11 @@ namespace BibliotecaN
     
     public partial class Person
     {
+        public Person()
+        {
+            this.Lends = new HashSet<Lend>();
+        }
+    
         public int ID { get; set; }
         public string Utilizator { get; set; }
         public string Nume { get; set; }
@@ -25,5 +30,6 @@ namespace BibliotecaN
         public int Rol { get; set; }
     
         public virtual Role Role { get; set; }
+        public virtual ICollection<Lend> Lends { get; set; }
     }
 }

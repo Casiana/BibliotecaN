@@ -32,6 +32,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Domains">
+      <EntityTypeMapping TypeName="BibliotecaModel.Domain">
+        <MappingFragment StoreEntitySet="Domain">
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Publishers">
+      <EntityTypeMapping TypeName="BibliotecaModel.Publisher">
+        <MappingFragment StoreEntitySet="Publisher">
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Books">
       <EntityTypeMapping TypeName="BibliotecaModel.Book">
         <MappingFragment StoreEntitySet="Book">
@@ -47,18 +63,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Domains">
-      <EntityTypeMapping TypeName="BibliotecaModel.Domain">
-        <MappingFragment StoreEntitySet="Domain">
-          <ScalarProperty Name="Nume" ColumnName="Nume" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Publishers">
-      <EntityTypeMapping TypeName="BibliotecaModel.Publisher">
-        <MappingFragment StoreEntitySet="Publisher">
-          <ScalarProperty Name="Nume" ColumnName="Nume" />
+    <EntitySetMapping Name="Lends">
+      <EntityTypeMapping TypeName="BibliotecaModel.Lend">
+        <MappingFragment StoreEntitySet="Lends">
+          <ScalarProperty Name="Data_Retur" ColumnName="Data_Retur" />
+          <ScalarProperty Name="Data_Imprumut" ColumnName="Data_Imprumut" />
+          <ScalarProperty Name="Person_ID" ColumnName="Person_ID" />
+          <ScalarProperty Name="Book_ID" ColumnName="Book_ID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
