@@ -21,9 +21,10 @@ namespace BibliotecaN
         {
             using (var db = new BibliotecaEntities())
             {
-                this.Close();
+                this.Hide();
                 var createAcc = new CreateAccount();
-                createAcc.Show();
+                createAcc.ShowDialog();
+                this.Close();
             }
         }
 
@@ -39,31 +40,41 @@ namespace BibliotecaN
                 {
                     if (item.Utilizator == username.Text)
                     {
-                        if (item.Parola == PasswordHash.GetHashString(password.Text))
+                        //if (item.Parola == PasswordHash.GetHashString(password.Text))
                         {
                             rol = item.Rol;
                             login = true;
                         }
                     }
                 }
-            }
+           
             if (login)
             {
                 if (rol == 1)
                 {
-                    this.Close();
+                    this.Hide();
                     var membru = new MembruForm();
-                    membru.Show();
+                        membru.id = (from p in db.People
+                                     where p.Utilizator == username.Text
+                                     select p.ID).First();
+                    membru.ShowDialog();
+                    this.Close();
                 }
                 if (rol == 2)
                 {
-                    this.Close();
+                    this.Hide();
                     var administrator = new AdministratorForm();
-                    administrator.Show();
+                    administrator.ShowDialog();
+                    this.Close();
                 }
             }
             else
                 MessageBox.Show("Parola sau Nume de utilizator Incorect");
+        }
+        }
+        private void username_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

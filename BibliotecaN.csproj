@@ -39,6 +39,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -103,6 +104,12 @@
     <Compile Include="Lend.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
     </Compile>
+    <Compile Include="MemberInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemberInformation.Designer.cs">
+      <DependentUpon>MemberInformation.cs</DependentUpon>
+    </Compile>
     <Compile Include="MembruForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemberInformation.resx">
+      <DependentUpon>MemberInformation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MembruForm.resx">
       <DependentUpon>MembruForm.cs</DependentUpon>
