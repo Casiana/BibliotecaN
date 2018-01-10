@@ -53,16 +53,8 @@ namespace BibliotecaN
                         }
                     }
                 }
-            }
-            if (login)
-            {
-                if (rol == 1)
-                {
-                    this.Close();
-                    var membru = new MembruForm();
-                    membru.Show();
-                }
-                if (rol == 2)
+
+                if (login)
                 {
                     if (rol == 1)
                     {
