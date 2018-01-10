@@ -34,6 +34,7 @@ namespace BibliotecaN
         public DbSet<Lend> Lends { get; set; }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     
         public virtual ObjectResult<return_card_Result2> return_card(Nullable<int> id_membru)
         {
@@ -46,6 +47,8 @@ namespace BibliotecaN
 =======
         public DbSet<booksView> booksViews { get; set; }
 >>>>>>> a67c77aaf975614773554114d907f6855b8480e3
+=======
+>>>>>>> parent of 26695d7... Library card form
 =======
 >>>>>>> parent of 26695d7... Library card form
     }

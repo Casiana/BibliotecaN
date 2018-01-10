@@ -7,11 +7,15 @@
 <<<<<<< HEAD
       <Diagram DiagramId="81edbdd4ab754f56a1371e2e9bc99760" Name="Diagram1">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <EntityTypeShape EntityType="BibliotecaModel.Person" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
 =======
       <Diagram DiagramId="81edbdd4ab754f56a1371e2e9bc99760" Name="Diagram1" ZoomLevel="64">
         <EntityTypeShape EntityType="BibliotecaModel.Person" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
 >>>>>>> a67c77aaf975614773554114d907f6855b8480e3
+=======
+        <EntityTypeShape EntityType="BibliotecaModel.Person" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+>>>>>>> parent of 26695d7... Library card form
 =======
         <EntityTypeShape EntityType="BibliotecaModel.Person" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
 >>>>>>> parent of 26695d7... Library card form

@@ -76,6 +76,7 @@
     </EntitySetMapping>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <FunctionImportMapping FunctionImportName="return_card" FunctionName="BibliotecaModel.Store.return_card">
       <ResultMapping>
         <ComplexTypeMapping TypeName="BibliotecaModel.return_card_Result2">
@@ -101,6 +102,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
 >>>>>>> a67c77aaf975614773554114d907f6855b8480e3
+=======
+>>>>>>> parent of 26695d7... Library card form
 =======
 >>>>>>> parent of 26695d7... Library card form
   </EntityContainerMapping>

@@ -88,6 +88,7 @@
     </Compile>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Compile Include="CardForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +105,8 @@
       <DependentUpon>Biblioteca.tt</DependentUpon>
 >>>>>>> a67c77aaf975614773554114d907f6855b8480e3
     </Compile>
+=======
+>>>>>>> parent of 26695d7... Library card form
 =======
 >>>>>>> parent of 26695d7... Library card form
     <Compile Include="CreateAccount.cs">
@@ -162,6 +165,7 @@
     </EmbeddedResource>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <EmbeddedResource Include="CardForm.resx">
       <DependentUpon>CardForm.cs</DependentUpon>
 =======
@@ -169,6 +173,8 @@
       <DependentUpon>BookList.cs</DependentUpon>
 >>>>>>> a67c77aaf975614773554114d907f6855b8480e3
     </EmbeddedResource>
+=======
+>>>>>>> parent of 26695d7... Library card form
 =======
 >>>>>>> parent of 26695d7... Library card form
     <EmbeddedResource Include="CreateAccount.resx">

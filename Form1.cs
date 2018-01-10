@@ -21,6 +21,7 @@ namespace BibliotecaN
         {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
            // this.Close();
             var createAcc = new CreateAccount(); 
             createAcc.Show();
@@ -34,12 +35,17 @@ namespace BibliotecaN
             }
 >>>>>>> a67c77aaf975614773554114d907f6855b8480e3
 =======
+=======
+>>>>>>> parent of 26695d7... Library card form
             using (var db = new BibliotecaEntities())
             {
                 this.Close();
                 var createAcc = new CreateAccount();
                 createAcc.Show();
             }
+<<<<<<< HEAD
+>>>>>>> parent of 26695d7... Library card form
+=======
 >>>>>>> parent of 26695d7... Library card form
         }
 

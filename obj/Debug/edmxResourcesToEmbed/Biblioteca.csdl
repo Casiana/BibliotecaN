@@ -70,12 +70,15 @@
     </AssociationSet>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <FunctionImport Name="return_card" ReturnType="Collection(BibliotecaModel.return_card_Result2)">
       <Parameter Name="id_membru" Mode="In" Type="Int32" />
     </FunctionImport>
 =======
     <EntitySet Name="booksViews" EntityType="BibliotecaModel.booksView" />
 >>>>>>> a67c77aaf975614773554114d907f6855b8480e3
+=======
+>>>>>>> parent of 26695d7... Library card form
 =======
 >>>>>>> parent of 26695d7... Library card form
   </EntityContainer>
@@ -195,6 +198,7 @@
   </Association>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <ComplexType Name="return_card_Result">
     <Property Type="String" Name="Titlu" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="ISBN" Nullable="true" MaxLength="50" />
@@ -236,6 +240,8 @@
     <Property Name="Editura" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
 >>>>>>> a67c77aaf975614773554114d907f6855b8480e3
+=======
+>>>>>>> parent of 26695d7... Library card form
 =======
 >>>>>>> parent of 26695d7... Library card form
 </Schema>
