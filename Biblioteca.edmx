@@ -72,6 +72,22 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nume" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Biblioteca2.dbo.booksView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="booksView">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Autor" />
+            <PropertyRef Name="Domeniu" />
+            <PropertyRef Name="Editura" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Titlu" Type="nvarchar" MaxLength="50" />
+          <Property Name="Autor" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ISBN" Type="nvarchar" MaxLength="50" />
+          <Property Name="Domeniu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Editura" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Book_Author">
           <End Role="Author" Type="Self.Author" Multiplicity="0..1" />
           <End Role="Book" Type="Self.Book" Multiplicity="*" />
@@ -155,6 +171,16 @@
           <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Publisher" EntityType="Self.Publisher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="booksView" EntityType="Self.booksView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[booksView].[ID] AS [ID], 
+[booksView].[Titlu] AS [Titlu], 
+[booksView].[Autor] AS [Autor], 
+[booksView].[ISBN] AS [ISBN], 
+[booksView].[Domeniu] AS [Domeniu], 
+[booksView].[Editura] AS [Editura]
+FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Book_Author" Association="Self.FK_Book_Author">
             <End Role="Author" EntitySet="Author" />
             <End Role="Book" EntitySet="Book" />
@@ -252,9 +278,13 @@
             <End Role="Person" EntitySet="People" />
             <End Role="Lend" EntitySet="Lends" />
           </AssociationSet>
+<<<<<<< HEAD
           <FunctionImport Name="return_card" ReturnType="Collection(BibliotecaModel.return_card_Result2)">
           <Parameter Name="id_membru" Mode="In" Type="Int32" />
           </FunctionImport>
+=======
+          <EntitySet Name="booksViews" EntityType="BibliotecaModel.booksView" />
+>>>>>>> a67c77aaf975614773554114d907f6855b8480e3
         </EntityContainer>
         <EntityType Name="Author">
           <Key>
@@ -371,6 +401,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+<<<<<<< HEAD
         <ComplexType Name="return_card_Result">
           <Property Type="String" Name="Titlu" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="ISBN" Nullable="true" MaxLength="50" />
@@ -396,6 +427,22 @@
           <Property Type="DateTime" Name="Data_Retur" Nullable="false" Precision="23" />
           <Property Type="Int32" Name="Stare_Imprumut" Nullable="true" />
         </ComplexType>
+=======
+        <EntityType Name="booksView">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Autor" />
+            <PropertyRef Name="Domeniu" />
+            <PropertyRef Name="Editura" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Titlu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Autor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ISBN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Domeniu" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Editura" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+>>>>>>> a67c77aaf975614773554114d907f6855b8480e3
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -476,6 +523,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+<<<<<<< HEAD
           <FunctionImportMapping FunctionImportName="return_card" FunctionName="BibliotecaModel.Store.return_card">
           <ResultMapping>
               <ComplexTypeMapping TypeName="BibliotecaModel.return_card_Result2">
@@ -487,6 +535,20 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+=======
+          <EntitySetMapping Name="booksViews">
+            <EntityTypeMapping TypeName="BibliotecaModel.booksView">
+              <MappingFragment StoreEntitySet="booksView">
+                <ScalarProperty Name="Editura" ColumnName="Editura" />
+                <ScalarProperty Name="Domeniu" ColumnName="Domeniu" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="Autor" ColumnName="Autor" />
+                <ScalarProperty Name="Titlu" ColumnName="Titlu" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+>>>>>>> a67c77aaf975614773554114d907f6855b8480e3
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

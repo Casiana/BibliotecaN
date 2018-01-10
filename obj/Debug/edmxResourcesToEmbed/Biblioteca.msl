@@ -75,6 +75,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+<<<<<<< HEAD
     <FunctionImportMapping FunctionImportName="return_card" FunctionName="BibliotecaModel.Store.return_card">
       <ResultMapping>
         <ComplexTypeMapping TypeName="BibliotecaModel.return_card_Result2">
@@ -86,5 +87,19 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+=======
+    <EntitySetMapping Name="booksViews">
+      <EntityTypeMapping TypeName="BibliotecaModel.booksView">
+        <MappingFragment StoreEntitySet="booksView">
+          <ScalarProperty Name="Editura" ColumnName="Editura" />
+          <ScalarProperty Name="Domeniu" ColumnName="Domeniu" />
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+          <ScalarProperty Name="Autor" ColumnName="Autor" />
+          <ScalarProperty Name="Titlu" ColumnName="Titlu" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+>>>>>>> a67c77aaf975614773554114d907f6855b8480e3
   </EntityContainerMapping>
 </Mapping>

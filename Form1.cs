@@ -19,9 +19,19 @@ namespace BibliotecaN
 
         private void button2_Click(object sender, EventArgs e)     //creare cont utilizator
         {
+<<<<<<< HEAD
            // this.Close();
             var createAcc = new CreateAccount(); 
             createAcc.Show();
+=======
+            using (var db = new BibliotecaEntities())
+            {
+                this.Hide();
+                var createAcc = new CreateAccount();
+                createAcc.ShowDialog();
+                this.Close();
+            }
+>>>>>>> a67c77aaf975614773554114d907f6855b8480e3
         }
 
         private void button1_Click(object sender, EventArgs e)      //autentificare
@@ -54,13 +64,36 @@ namespace BibliotecaN
                 }
                 if (rol == 2)
                 {
-                    this.Close();
-                    var administrator = new AdministratorForm();
-                    administrator.Show();
+                    if (rol == 1)
+                    {
+                        this.Hide();
+                        var membru = new MembruForm();
+                        membru.id = (from p in db.People
+                                     where p.Utilizator == username.Text
+                                     select p.ID).First();
+                        membru.ShowDialog();
+                        this.Close();
+                    }
+                    if (rol == 2)
+                    {
+                        this.Hide();
+                        var administrator = new AdministratorForm();
+                        administrator.ShowDialog();
+                        this.Close();
+                    }
                 }
+                else
+                    MessageBox.Show("Parola sau Nume de utilizator Incorect");
             }
-            else
-                MessageBox.Show("Parola sau Nume de utilizator Incorect");
+        }
+        private void username_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

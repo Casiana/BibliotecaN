@@ -35,6 +35,7 @@ namespace BibliotecaN
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Lend> Lends { get; set; }
+<<<<<<< HEAD
     
         public virtual ObjectResult<return_card_Result2> return_card(Nullable<int> id_membru)
         {
@@ -44,5 +45,8 @@ namespace BibliotecaN
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<return_card_Result2>("return_card", id_membruParameter);
         }
+=======
+        public DbSet<booksView> booksViews { get; set; }
+>>>>>>> a67c77aaf975614773554114d907f6855b8480e3
     }
 }
