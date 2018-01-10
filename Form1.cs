@@ -17,40 +17,15 @@ namespace BibliotecaN
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)     //creare cont utilizator
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
            // this.Close();
             var createAcc = new CreateAccount(); 
             createAcc.Show();
-=======
-            using (var db = new BibliotecaEntities())
-            {
-                this.Hide();
-                var createAcc = new CreateAccount();
-                createAcc.ShowDialog();
-                this.Close();
-            }
->>>>>>> a67c77aaf975614773554114d907f6855b8480e3
-=======
-=======
->>>>>>> parent of 26695d7... Library card form
-            using (var db = new BibliotecaEntities())
-            {
-                this.Close();
-                var createAcc = new CreateAccount();
-                createAcc.Show();
-            }
-<<<<<<< HEAD
->>>>>>> parent of 26695d7... Library card form
-=======
->>>>>>> parent of 26695d7... Library card form
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+        private void button1_Click(object sender, EventArgs e)      //autentificare
+        { 
             bool login = false;
             int rol = 0;
             using (var db = new BibliotecaEntities())
@@ -68,39 +43,24 @@ namespace BibliotecaN
                         }
                     }
                 }
-
-                if (login)
-                {
-                    if (rol == 1)
-                    {
-                        this.Hide();
-                        var membru = new MembruForm();
-                        membru.id = (from p in db.People
-                                     where p.Utilizator == username.Text
-                                     select p.ID).First();
-                        membru.ShowDialog();
-                        this.Close();
-                    }
-                    if (rol == 2)
-                    {
-                        this.Hide();
-                        var administrator = new AdministratorForm();
-                        administrator.ShowDialog();
-                        this.Close();
-                    }
-                }
-                else
-                    MessageBox.Show("Parola sau Nume de utilizator Incorect");
             }
-        }
-        private void username_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
+            if (login)
+            {
+                if (rol == 1)
+                {
+                    this.Close();
+                    var membru = new MembruForm();
+                    membru.Show();
+                }
+                if (rol == 2)
+                {
+                    this.Close();
+                    var administrator = new AdministratorForm();
+                    administrator.Show();
+                }
+            }
+            else
+                MessageBox.Show("Parola sau Nume de utilizator Incorect");
         }
     }
 }

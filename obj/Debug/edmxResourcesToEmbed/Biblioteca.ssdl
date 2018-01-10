@@ -37,6 +37,7 @@
     <Property Name="Person_ID" Type="int" Nullable="false" />
     <Property Name="Data_Imprumut" Type="datetime" Nullable="false" />
     <Property Name="Data_Retur" Type="datetime" Nullable="false" />
+    <Property Name="Stare_Imprumut" Type="int" />
   </EntityType>
   <EntityType Name="Person">
     <Key>
@@ -65,22 +66,6 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nume" Type="nvarchar" MaxLength="50" />
-  </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'Biblioteca2.dbo.booksView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="booksView">
-    <Key>
-      <PropertyRef Name="ID" />
-      <PropertyRef Name="Autor" />
-      <PropertyRef Name="Domeniu" />
-      <PropertyRef Name="Editura" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="Titlu" Type="nvarchar" MaxLength="50" />
-    <Property Name="Autor" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="ISBN" Type="nvarchar" MaxLength="50" />
-    <Property Name="Domeniu" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Editura" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <Association Name="FK_Book_Author">
     <End Role="Author" Type="Self.Author" Multiplicity="0..1" />
@@ -154,6 +139,9 @@ warning 6002: The table/view 'Biblioteca2.dbo.booksView' does not have a primary
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="return_card" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_membru" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="BibliotecaModelStoreContainer">
     <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
@@ -162,16 +150,6 @@ warning 6002: The table/view 'Biblioteca2.dbo.booksView' does not have a primary
     <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Publisher" EntityType="Self.Publisher" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="booksView" EntityType="Self.booksView" store:Type="Views" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-[booksView].[ID] AS [ID], 
-[booksView].[Titlu] AS [Titlu], 
-[booksView].[Autor] AS [Autor], 
-[booksView].[ISBN] AS [ISBN], 
-[booksView].[Domeniu] AS [Domeniu], 
-[booksView].[Editura] AS [Editura]
-FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
-    </EntitySet>
     <AssociationSet Name="FK_Book_Author" Association="Self.FK_Book_Author">
       <End Role="Author" EntitySet="Author" />
       <End Role="Book" EntitySet="Book" />

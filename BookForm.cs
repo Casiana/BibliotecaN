@@ -50,23 +50,20 @@ namespace BibliotecaN
                 publisher_combo.DataSource = publishers;
                 autor_combo.DataSource = authors;
                 domain_combo.DataSource = domains;
-
             }
         }
-
 
         private void button1_Click(object sender, EventArgs e)
         {
             OpenFileDialog open = new OpenFileDialog();
             // image filters  
             open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
-
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) 
         {
             using (var db = new BibliotecaEntities())
-            {
+            { 
                 var book = new Book();
                 book.Titlu = titluBox.Text;
                 book.ISBN = isbnBox.Text;

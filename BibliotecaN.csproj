@@ -39,7 +39,6 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Messaging" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -77,6 +76,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Biblioteca.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Biblioteca2DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Biblioteca2DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Book.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
     </Compile>
@@ -86,29 +90,12 @@
     <Compile Include="BookForm.Designer.cs">
       <DependentUpon>BookForm.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     <Compile Include="CardForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CardForm.Designer.cs">
       <DependentUpon>CardForm.cs</DependentUpon>
-=======
-    <Compile Include="BookList.cs">
-      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BookList.Designer.cs">
-      <DependentUpon>BookList.cs</DependentUpon>
-    </Compile>
-    <Compile Include="booksView.cs">
-      <DependentUpon>Biblioteca.tt</DependentUpon>
->>>>>>> a67c77aaf975614773554114d907f6855b8480e3
-    </Compile>
-=======
->>>>>>> parent of 26695d7... Library card form
-=======
->>>>>>> parent of 26695d7... Library card form
     <Compile Include="CreateAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,20 +111,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lend.cs">
+    <Compile Include="GetCardByMemberId_Result.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
     </Compile>
-    <Compile Include="MemberInformation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MemberInformation.Designer.cs">
-      <DependentUpon>MemberInformation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MemberSettings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MemberSettings.Designer.cs">
-      <DependentUpon>MemberSettings.cs</DependentUpon>
+    <Compile Include="Lend.cs">
+      <DependentUpon>Biblioteca.tt</DependentUpon>
     </Compile>
     <Compile Include="MembruForm.cs">
       <SubType>Form</SubType>
@@ -154,6 +132,15 @@
     <Compile Include="Publisher.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
     </Compile>
+    <Compile Include="return_card_Result.cs">
+      <DependentUpon>Biblioteca.tt</DependentUpon>
+    </Compile>
+    <Compile Include="return_card_Result1.cs">
+      <DependentUpon>Biblioteca.tt</DependentUpon>
+    </Compile>
+    <Compile Include="return_card_Result2.cs">
+      <DependentUpon>Biblioteca.tt</DependentUpon>
+    </Compile>
     <Compile Include="Role.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
     </Compile>
@@ -163,31 +150,14 @@
     <EmbeddedResource Include="BookForm.resx">
       <DependentUpon>BookForm.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     <EmbeddedResource Include="CardForm.resx">
       <DependentUpon>CardForm.cs</DependentUpon>
-=======
-    <EmbeddedResource Include="BookList.resx">
-      <DependentUpon>BookList.cs</DependentUpon>
->>>>>>> a67c77aaf975614773554114d907f6855b8480e3
     </EmbeddedResource>
-=======
->>>>>>> parent of 26695d7... Library card form
-=======
->>>>>>> parent of 26695d7... Library card form
     <EmbeddedResource Include="CreateAccount.resx">
       <DependentUpon>CreateAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MemberInformation.resx">
-      <DependentUpon>MemberInformation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MemberSettings.resx">
-      <DependentUpon>MemberSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MembruForm.resx">
       <DependentUpon>MembruForm.cs</DependentUpon>
@@ -208,6 +178,17 @@
     <None Include="Biblioteca.edmx.diagram">
       <DependentUpon>Biblioteca.edmx</DependentUpon>
     </None>
+    <None Include="Biblioteca2DataSet.xsc">
+      <DependentUpon>Biblioteca2DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Biblioteca2DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Biblioteca2DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Biblioteca2DataSet.xss">
+      <DependentUpon>Biblioteca2DataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -220,7 +201,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Biblioteca.Context.tt">

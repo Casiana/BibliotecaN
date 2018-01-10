@@ -68,19 +68,9 @@
       <End Role="Person" EntitySet="People" />
       <End Role="Lend" EntitySet="Lends" />
     </AssociationSet>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     <FunctionImport Name="return_card" ReturnType="Collection(BibliotecaModel.return_card_Result2)">
       <Parameter Name="id_membru" Mode="In" Type="Int32" />
     </FunctionImport>
-=======
-    <EntitySet Name="booksViews" EntityType="BibliotecaModel.booksView" />
->>>>>>> a67c77aaf975614773554114d907f6855b8480e3
-=======
->>>>>>> parent of 26695d7... Library card form
-=======
->>>>>>> parent of 26695d7... Library card form
   </EntityContainer>
   <EntityType Name="Author">
     <Key>
@@ -171,6 +161,7 @@
     <Property Name="Data_Retur" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Book" Relationship="BibliotecaModel.FK_Lends_Book" FromRole="Lend" ToRole="Book" />
     <NavigationProperty Name="Person" Relationship="BibliotecaModel.FK_Lends_Person" FromRole="Lend" ToRole="Person" />
+    <Property Name="Stare_Imprumut" Type="Int32" />
   </EntityType>
   <Association Name="FK_Lends_Book">
     <End Type="BibliotecaModel.Book" Role="Book" Multiplicity="1" />
@@ -196,9 +187,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   <ComplexType Name="return_card_Result">
     <Property Type="String" Name="Titlu" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="ISBN" Nullable="true" MaxLength="50" />
@@ -224,24 +212,4 @@
     <Property Type="DateTime" Name="Data_Retur" Nullable="false" Precision="23" />
     <Property Type="Int32" Name="Stare_Imprumut" Nullable="true" />
   </ComplexType>
-=======
-  <EntityType Name="booksView">
-    <Key>
-      <PropertyRef Name="ID" />
-      <PropertyRef Name="Autor" />
-      <PropertyRef Name="Domeniu" />
-      <PropertyRef Name="Editura" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="Titlu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Autor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ISBN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Domeniu" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Editura" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
->>>>>>> a67c77aaf975614773554114d907f6855b8480e3
-=======
->>>>>>> parent of 26695d7... Library card form
-=======
->>>>>>> parent of 26695d7... Library card form
 </Schema>

@@ -10,18 +10,13 @@
 namespace BibliotecaN
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Lend
+    public partial class return_card_Result2
     {
-        public int ID { get; set; }
-        public int Book_ID { get; set; }
-        public int Person_ID { get; set; }
+        public string Titlu { get; set; }
+        public string ISBN { get; set; }
         public System.DateTime Data_Imprumut { get; set; }
         public System.DateTime Data_Retur { get; set; }
         public Nullable<int> Stare_Imprumut { get; set; }
-    
-        public virtual Book Book { get; set; }
-        public virtual Person Person { get; set; }
     }
 }
