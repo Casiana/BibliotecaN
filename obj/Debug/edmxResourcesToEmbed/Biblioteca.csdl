@@ -68,6 +68,7 @@
       <End Role="Person" EntitySet="People" />
       <End Role="Lend" EntitySet="Lends" />
     </AssociationSet>
+    <EntitySet Name="booksViews" EntityType="BibliotecaModel.booksView" />
   </EntityContainer>
   <EntityType Name="Author">
     <Key>
@@ -183,4 +184,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="booksView">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Autor" />
+      <PropertyRef Name="Domeniu" />
+      <PropertyRef Name="Editura" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Titlu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Autor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ISBN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Domeniu" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Editura" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

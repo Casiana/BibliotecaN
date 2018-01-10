@@ -40,39 +40,44 @@ namespace BibliotecaN
                 {
                     if (item.Utilizator == username.Text)
                     {
-                        //if (item.Parola == PasswordHash.GetHashString(password.Text))
+                        if (item.Parola == PasswordHash.GetHashString(password.Text))
                         {
                             rol = item.Rol;
                             login = true;
                         }
                     }
                 }
-           
-            if (login)
-            {
-                if (rol == 1)
+
+                if (login)
                 {
-                    this.Hide();
-                    var membru = new MembruForm();
+                    if (rol == 1)
+                    {
+                        this.Hide();
+                        var membru = new MembruForm();
                         membru.id = (from p in db.People
                                      where p.Utilizator == username.Text
                                      select p.ID).First();
-                    membru.ShowDialog();
-                    this.Close();
+                        membru.ShowDialog();
+                        this.Close();
+                    }
+                    if (rol == 2)
+                    {
+                        this.Hide();
+                        var administrator = new AdministratorForm();
+                        administrator.ShowDialog();
+                        this.Close();
+                    }
                 }
-                if (rol == 2)
-                {
-                    this.Hide();
-                    var administrator = new AdministratorForm();
-                    administrator.ShowDialog();
-                    this.Close();
-                }
+                else
+                    MessageBox.Show("Parola sau Nume de utilizator Incorect");
             }
-            else
-                MessageBox.Show("Parola sau Nume de utilizator Incorect");
-        }
         }
         private void username_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }

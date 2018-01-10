@@ -32,5 +32,6 @@ namespace BibliotecaN
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Lend> Lends { get; set; }
+        public DbSet<booksView> booksViews { get; set; }
     }
 }

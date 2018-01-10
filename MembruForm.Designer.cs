@@ -56,6 +56,7 @@
             this.buttonBookList.TabIndex = 1;
             this.buttonBookList.Text = "Book List";
             this.buttonBookList.UseVisualStyleBackColor = true;
+            this.buttonBookList.Click += new System.EventHandler(this.buttonBookList_Click);
             // 
             // buttonSearch
             // 
@@ -83,6 +84,7 @@
             this.buttonSettings.TabIndex = 4;
             this.buttonSettings.Text = "Settings";
             this.buttonSettings.UseVisualStyleBackColor = true;
+            this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
             // 
             // buttonReport
             // 

@@ -29,3 +29,5 @@ E:\aNULL3\Baze de date\BibliotecaN\obj\Debug\BibliotecaN.csproj.CoreCompileInput
 E:\aNULL3\Baze de date\BibliotecaN\obj\Debug\BibliotecaN.exe
 E:\aNULL3\Baze de date\BibliotecaN\obj\Debug\BibliotecaN.pdb
 E:\aNULL3\Baze de date\BibliotecaN\obj\Debug\BibliotecaN.MemberInformation.resources
+E:\aNULL3\Baze de date\BibliotecaN\obj\Debug\BibliotecaN.BookList.resources
+E:\aNULL3\Baze de date\BibliotecaN\obj\Debug\BibliotecaN.MemberSettings.resources

@@ -29,7 +29,7 @@ namespace BibliotecaN
             var memberInfo = new MemberInformation(this);
             memberInfo.id = this.id;
             memberInfo.ShowDialog();
-            //this.Close();
+            
 
         }
 
@@ -37,9 +37,27 @@ namespace BibliotecaN
         {
             this.Hide();
             var newForm = new Form1();
-            newForm.Show();
+            newForm.ShowDialog();
             this.Close();
 
+        }
+
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var memberSettings = new MemberSettings(this);
+            memberSettings.id = id;
+            memberSettings.ShowDialog();
+            //this.close();
+
+        }
+
+        private void buttonBookList_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var bookList = new BookList(this);
+            bookList.ShowDialog();
+            //this.Close();
         }
     }
 }

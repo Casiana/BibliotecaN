@@ -86,6 +86,15 @@
     <Compile Include="BookForm.Designer.cs">
       <DependentUpon>BookForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BookList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BookList.Designer.cs">
+      <DependentUpon>BookList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="booksView.cs">
+      <DependentUpon>Biblioteca.tt</DependentUpon>
+    </Compile>
     <Compile Include="CreateAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +118,12 @@
     </Compile>
     <Compile Include="MemberInformation.Designer.cs">
       <DependentUpon>MemberInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemberSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemberSettings.Designer.cs">
+      <DependentUpon>MemberSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="MembruForm.cs">
       <SubType>Form</SubType>
@@ -134,6 +149,9 @@
     <EmbeddedResource Include="BookForm.resx">
       <DependentUpon>BookForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BookList.resx">
+      <DependentUpon>BookList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateAccount.resx">
       <DependentUpon>CreateAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -142,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MemberInformation.resx">
       <DependentUpon>MemberInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemberSettings.resx">
+      <DependentUpon>MemberSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MembruForm.resx">
       <DependentUpon>MembruForm.cs</DependentUpon>
