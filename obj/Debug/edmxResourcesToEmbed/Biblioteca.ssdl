@@ -37,6 +37,7 @@
     <Property Name="Person_ID" Type="int" Nullable="false" />
     <Property Name="Data_Imprumut" Type="datetime" Nullable="false" />
     <Property Name="Data_Retur" Type="datetime" Nullable="false" />
+    <Property Name="Stare_Imprumut" Type="int" />
   </EntityType>
   <EntityType Name="Person">
     <Key>
@@ -138,6 +139,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="return_card" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_membru" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="BibliotecaModelStoreContainer">
     <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />

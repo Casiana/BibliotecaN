@@ -12,6 +12,9 @@ namespace BibliotecaN
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Objects;
+    using System.Data.Objects.DataClasses;
+    using System.Linq;
     
     public partial class BibliotecaEntities : DbContext
     {
@@ -32,5 +35,14 @@ namespace BibliotecaN
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Lend> Lends { get; set; }
+    
+        public virtual ObjectResult<return_card_Result2> return_card(Nullable<int> id_membru)
+        {
+            var id_membruParameter = id_membru.HasValue ?
+                new ObjectParameter("id_membru", id_membru) :
+                new ObjectParameter("id_membru", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<return_card_Result2>("return_card", id_membruParameter);
+        }
     }
 }

@@ -13,3 +13,4 @@ C:\Users\Carp Ioan\Desktop\Projects\BibliotecaN\BibliotecaN\obj\Debug\Biblioteca
 C:\Users\Carp Ioan\Desktop\Projects\BibliotecaN\BibliotecaN\obj\Debug\BibliotecaN.AdministratorForm.resources
 C:\Users\Carp Ioan\Desktop\Projects\BibliotecaN\BibliotecaN\obj\Debug\BibliotecaN.MembruForm.resources
 C:\Users\Carp Ioan\Desktop\Projects\BibliotecaN\BibliotecaN\obj\Debug\BibliotecaN.BookForm.resources
+C:\Users\Carp Ioan\Desktop\Projects\BibliotecaN\BibliotecaN\obj\Debug\BibliotecaN.CardForm.resources

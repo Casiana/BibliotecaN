@@ -76,6 +76,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Biblioteca.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Biblioteca2DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Biblioteca2DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Book.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
     </Compile>
@@ -84,6 +89,12 @@
     </Compile>
     <Compile Include="BookForm.Designer.cs">
       <DependentUpon>BookForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CardForm.Designer.cs">
+      <DependentUpon>CardForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CreateAccount.cs">
       <SubType>Form</SubType>
@@ -99,6 +110,9 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GetCardByMemberId_Result.cs">
+      <DependentUpon>Biblioteca.tt</DependentUpon>
     </Compile>
     <Compile Include="Lend.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
@@ -118,6 +132,15 @@
     <Compile Include="Publisher.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
     </Compile>
+    <Compile Include="return_card_Result.cs">
+      <DependentUpon>Biblioteca.tt</DependentUpon>
+    </Compile>
+    <Compile Include="return_card_Result1.cs">
+      <DependentUpon>Biblioteca.tt</DependentUpon>
+    </Compile>
+    <Compile Include="return_card_Result2.cs">
+      <DependentUpon>Biblioteca.tt</DependentUpon>
+    </Compile>
     <Compile Include="Role.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
     </Compile>
@@ -126,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BookForm.resx">
       <DependentUpon>BookForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardForm.resx">
+      <DependentUpon>CardForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateAccount.resx">
       <DependentUpon>CreateAccount.cs</DependentUpon>
@@ -152,6 +178,17 @@
     <None Include="Biblioteca.edmx.diagram">
       <DependentUpon>Biblioteca.edmx</DependentUpon>
     </None>
+    <None Include="Biblioteca2DataSet.xsc">
+      <DependentUpon>Biblioteca2DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Biblioteca2DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Biblioteca2DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Biblioteca2DataSet.xss">
+      <DependentUpon>Biblioteca2DataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -164,7 +201,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Biblioteca.Context.tt">

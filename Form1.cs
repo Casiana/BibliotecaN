@@ -17,18 +17,15 @@ namespace BibliotecaN
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)     //creare cont utilizator
         {
-            using (var db = new BibliotecaEntities())
-            {
-                this.Close();
-                var createAcc = new CreateAccount();
-                createAcc.Show();
-            }
+           // this.Close();
+            var createAcc = new CreateAccount(); 
+            createAcc.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+        private void button1_Click(object sender, EventArgs e)      //autentificare
+        { 
             bool login = false;
             int rol = 0;
             using (var db = new BibliotecaEntities())

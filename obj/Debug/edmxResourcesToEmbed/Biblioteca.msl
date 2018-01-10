@@ -66,6 +66,7 @@
     <EntitySetMapping Name="Lends">
       <EntityTypeMapping TypeName="BibliotecaModel.Lend">
         <MappingFragment StoreEntitySet="Lends">
+          <ScalarProperty Name="Stare_Imprumut" ColumnName="Stare_Imprumut" />
           <ScalarProperty Name="Data_Retur" ColumnName="Data_Retur" />
           <ScalarProperty Name="Data_Imprumut" ColumnName="Data_Imprumut" />
           <ScalarProperty Name="Person_ID" ColumnName="Person_ID" />
@@ -74,5 +75,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="return_card" FunctionName="BibliotecaModel.Store.return_card">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BibliotecaModel.return_card_Result2">
+          <ScalarProperty Name="Titlu" ColumnName="Titlu" />
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+          <ScalarProperty Name="Data_Imprumut" ColumnName="Data_Imprumut" />
+          <ScalarProperty Name="Data_Retur" ColumnName="Data_Retur" />
+          <ScalarProperty Name="Stare_Imprumut" ColumnName="Stare_Imprumut" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

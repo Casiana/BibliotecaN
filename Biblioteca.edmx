@@ -42,6 +42,7 @@
           <Property Name="Person_ID" Type="int" Nullable="false" />
           <Property Name="Data_Imprumut" Type="datetime" Nullable="false" />
           <Property Name="Data_Retur" Type="datetime" Nullable="false" />
+          <Property Name="Stare_Imprumut" Type="int" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -143,6 +144,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="return_card" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_membru" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="BibliotecaModelStoreContainer">
           <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
@@ -248,6 +252,9 @@
             <End Role="Person" EntitySet="People" />
             <End Role="Lend" EntitySet="Lends" />
           </AssociationSet>
+          <FunctionImport Name="return_card" ReturnType="Collection(BibliotecaModel.return_card_Result2)">
+          <Parameter Name="id_membru" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Author">
           <Key>
@@ -338,6 +345,7 @@
           <Property Name="Data_Retur" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Book" Relationship="BibliotecaModel.FK_Lends_Book" FromRole="Lend" ToRole="Book" />
           <NavigationProperty Name="Person" Relationship="BibliotecaModel.FK_Lends_Person" FromRole="Lend" ToRole="Person" />
+          <Property Name="Stare_Imprumut" Type="Int32" />
         </EntityType>
         <Association Name="FK_Lends_Book">
           <End Type="BibliotecaModel.Book" Role="Book" Multiplicity="1" />
@@ -363,6 +371,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="return_card_Result">
+          <Property Type="String" Name="Titlu" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ISBN" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Data_Imprumut" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="Data_Retur" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetCardByMemberId_Result">
+          <Property Type="String" Name="Titlu" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ISBN" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Data_Imprumut" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="Data_Retur" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="return_card_Result1">
+          <Property Type="String" Name="Titlu" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ISBN" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Data_Imprumut" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="Data_Retur" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="return_card_Result2">
+          <Property Type="String" Name="Titlu" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ISBN" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Data_Imprumut" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="Data_Retur" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="Stare_Imprumut" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -434,6 +467,7 @@
           <EntitySetMapping Name="Lends">
             <EntityTypeMapping TypeName="BibliotecaModel.Lend">
               <MappingFragment StoreEntitySet="Lends">
+                <ScalarProperty Name="Stare_Imprumut" ColumnName="Stare_Imprumut" />
                 <ScalarProperty Name="Data_Retur" ColumnName="Data_Retur" />
                 <ScalarProperty Name="Data_Imprumut" ColumnName="Data_Imprumut" />
                 <ScalarProperty Name="Person_ID" ColumnName="Person_ID" />
@@ -442,6 +476,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="return_card" FunctionName="BibliotecaModel.Store.return_card">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="BibliotecaModel.return_card_Result2">
+                <ScalarProperty Name="Titlu" ColumnName="Titlu" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="Data_Imprumut" ColumnName="Data_Imprumut" />
+                <ScalarProperty Name="Data_Retur" ColumnName="Data_Retur" />
+                <ScalarProperty Name="Stare_Imprumut" ColumnName="Stare_Imprumut" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
