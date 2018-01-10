@@ -66,7 +66,6 @@
     <EntitySetMapping Name="Lends">
       <EntityTypeMapping TypeName="BibliotecaModel.Lend">
         <MappingFragment StoreEntitySet="Lends">
-          <ScalarProperty Name="Stare_Imprumut" ColumnName="Stare_Imprumut" />
           <ScalarProperty Name="Data_Retur" ColumnName="Data_Retur" />
           <ScalarProperty Name="Data_Imprumut" ColumnName="Data_Imprumut" />
           <ScalarProperty Name="Person_ID" ColumnName="Person_ID" />
@@ -75,6 +74,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <FunctionImportMapping FunctionImportName="return_card" FunctionName="BibliotecaModel.Store.return_card">
       <ResultMapping>
@@ -101,5 +101,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
 >>>>>>> a67c77aaf975614773554114d907f6855b8480e3
+=======
+>>>>>>> parent of 26695d7... Library card form
   </EntityContainerMapping>
 </Mapping>

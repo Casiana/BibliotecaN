@@ -6,14 +6,18 @@
     <edmx:Diagrams>
 <<<<<<< HEAD
       <Diagram DiagramId="81edbdd4ab754f56a1371e2e9bc99760" Name="Diagram1">
+<<<<<<< HEAD
         <EntityTypeShape EntityType="BibliotecaModel.Person" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
 =======
       <Diagram DiagramId="81edbdd4ab754f56a1371e2e9bc99760" Name="Diagram1" ZoomLevel="64">
         <EntityTypeShape EntityType="BibliotecaModel.Person" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
 >>>>>>> a67c77aaf975614773554114d907f6855b8480e3
+=======
+        <EntityTypeShape EntityType="BibliotecaModel.Person" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+>>>>>>> parent of 26695d7... Library card form
         <EntityTypeShape EntityType="BibliotecaModel.Role" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
         <AssociationConnector Association="BibliotecaModel.FK_Person_Role" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="BibliotecaModel.Author" Width="1.5" PointX="1.25" PointY="8.125" />
+        <EntityTypeShape EntityType="BibliotecaModel.Author" Width="1.5" PointX="0.75" PointY="8.75" />
         <EntityTypeShape EntityType="BibliotecaModel.Domain" Width="1.5" PointX="0.75" PointY="5.75" />
         <EntityTypeShape EntityType="BibliotecaModel.Publisher" Width="1.5" PointX="5.375" PointY="0.875" />
         <EntityTypeShape EntityType="BibliotecaModel.Book" Width="1.5" PointX="7.625" PointY="4" />

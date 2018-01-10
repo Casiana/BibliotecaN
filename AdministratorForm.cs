@@ -20,14 +20,6 @@ namespace BibliotecaN
 
         public void InitializeDropDowns()
         {
-            carte_combo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            carte_combo.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            carte_combo.AutoCompleteSource = AutoCompleteSource.ListItems;
-             
-            membru_combo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            membru_combo.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            membru_combo.AutoCompleteSource = AutoCompleteSource.ListItems;
-
             using (var db = new BibliotecaEntities())
             {
                 List<string> members = new List<string>();
@@ -76,6 +68,7 @@ namespace BibliotecaN
                 author_text.Text = "";
                 MessageBox.Show("Autor creat cu success!");
             }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -91,16 +84,10 @@ namespace BibliotecaN
             }
         }
 
-        void book_formClosed(object sender, FormClosedEventArgs e)
-        {
-            InitializeDropDowns();
-        }
-
         private void add_book_Click(object sender, EventArgs e)
         {
-            var book_form = new BookForm(); 
+            var book_form = new BookForm();
             book_form.Show();
-            book_form.FormClosed += new FormClosedEventHandler(book_formClosed);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -114,7 +101,7 @@ namespace BibliotecaN
                               where b.Titlu == titlu
                               select b).SingleOrDefault();
                 if (result.Exemplare == 0)
-                { 
+                {
                     MessageBox.Show("Nu mai sunt carti disponibile ");
                     return;
                 }
@@ -126,68 +113,11 @@ namespace BibliotecaN
                 imprumut.Person = result2;
                 imprumut.Data_Imprumut = DateTime.Now;
                 imprumut.Data_Retur = DateTime.Now.AddDays(30);
-                imprumut.Stare_Imprumut = 1;
                 db.Lends.Add(imprumut);
                 db.SaveChanges();
 
                 MessageBox.Show("Imprumut adaugat cu success!");
             }
         }
-
-        private void button_library_card_Click(object sender, EventArgs e)
-        {
-            var card_form = new CardForm();
-            card_form.Show();
-        }
-
-        private void button_retur_Click(object sender, EventArgs e)
-        {
-            using (var db = new BibliotecaEntities())
-            {
-                var titlu = carte_combo.SelectedItem.ToString();
-                var nume = membru_combo.SelectedItem.ToString();
-
-                int book_id = (from b in db.Books
-                               where b.Titlu == titlu
-                               select b.ID).SingleOrDefault();
-
-                String[] member_name = nume.Split(' ');
-
-                String nume0 = member_name[0];
-                String nume1 = member_name[1];
-
-                int member_id = (from b in db.People
-                                 where b.Nume == nume0 && b.Prenume == nume1 && b.Rol == 1
-                                 select b.ID).SingleOrDefault();
-
-                var rowToUpdate = db.Lends.Where(o => (o.Book_ID == book_id)).Where(o => (o.Person_ID == member_id));
-                if (rowToUpdate.Any())
-                {
-                    foreach (var item in rowToUpdate)
-                    {
-                        item.Stare_Imprumut = 0;
-                    }
-                    MessageBox.Show("Actiune realizata cu succes.");
-
-                    var result = (from b in db.Books
-                                  where b.Titlu == titlu
-                                  select b).SingleOrDefault();
-
-                    result.Exemplare++;
-                }
-                else
-                    MessageBox.Show("Va rugam, introduceti date pentru o inregistrare valida.");
-                db.SaveChanges();
-            }
-        }
-
-        private void AdministratorForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
-
-
-//raport  
-//carte returnata

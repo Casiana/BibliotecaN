@@ -42,7 +42,6 @@
           <Property Name="Person_ID" Type="int" Nullable="false" />
           <Property Name="Data_Imprumut" Type="datetime" Nullable="false" />
           <Property Name="Data_Retur" Type="datetime" Nullable="false" />
-          <Property Name="Stare_Imprumut" Type="int" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -160,9 +159,6 @@ warning 6002: The table/view 'Biblioteca2.dbo.booksView' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="return_card" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id_membru" Type="int" Mode="In" />
-        </Function>
         <EntityContainer Name="BibliotecaModelStoreContainer">
           <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
@@ -279,12 +275,15 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
             <End Role="Lend" EntitySet="Lends" />
           </AssociationSet>
 <<<<<<< HEAD
+<<<<<<< HEAD
           <FunctionImport Name="return_card" ReturnType="Collection(BibliotecaModel.return_card_Result2)">
           <Parameter Name="id_membru" Mode="In" Type="Int32" />
           </FunctionImport>
 =======
           <EntitySet Name="booksViews" EntityType="BibliotecaModel.booksView" />
 >>>>>>> a67c77aaf975614773554114d907f6855b8480e3
+=======
+>>>>>>> parent of 26695d7... Library card form
         </EntityContainer>
         <EntityType Name="Author">
           <Key>
@@ -375,7 +374,6 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
           <Property Name="Data_Retur" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Book" Relationship="BibliotecaModel.FK_Lends_Book" FromRole="Lend" ToRole="Book" />
           <NavigationProperty Name="Person" Relationship="BibliotecaModel.FK_Lends_Person" FromRole="Lend" ToRole="Person" />
-          <Property Name="Stare_Imprumut" Type="Int32" />
         </EntityType>
         <Association Name="FK_Lends_Book">
           <End Type="BibliotecaModel.Book" Role="Book" Multiplicity="1" />
@@ -401,6 +399,7 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
+<<<<<<< HEAD
 <<<<<<< HEAD
         <ComplexType Name="return_card_Result">
           <Property Type="String" Name="Titlu" Nullable="true" MaxLength="50" />
@@ -443,6 +442,8 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
           <Property Name="Editura" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
 >>>>>>> a67c77aaf975614773554114d907f6855b8480e3
+=======
+>>>>>>> parent of 26695d7... Library card form
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -514,7 +515,6 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
           <EntitySetMapping Name="Lends">
             <EntityTypeMapping TypeName="BibliotecaModel.Lend">
               <MappingFragment StoreEntitySet="Lends">
-                <ScalarProperty Name="Stare_Imprumut" ColumnName="Stare_Imprumut" />
                 <ScalarProperty Name="Data_Retur" ColumnName="Data_Retur" />
                 <ScalarProperty Name="Data_Imprumut" ColumnName="Data_Imprumut" />
                 <ScalarProperty Name="Person_ID" ColumnName="Person_ID" />
@@ -523,6 +523,7 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+<<<<<<< HEAD
 <<<<<<< HEAD
           <FunctionImportMapping FunctionImportName="return_card" FunctionName="BibliotecaModel.Store.return_card">
           <ResultMapping>
@@ -549,6 +550,8 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
 >>>>>>> a67c77aaf975614773554114d907f6855b8480e3
+=======
+>>>>>>> parent of 26695d7... Library card form
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

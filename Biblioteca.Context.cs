@@ -12,9 +12,6 @@ namespace BibliotecaN
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Objects;
-    using System.Data.Objects.DataClasses;
-    using System.Linq;
     
     public partial class BibliotecaEntities : DbContext
     {
@@ -36,6 +33,7 @@ namespace BibliotecaN
         public DbSet<Book> Books { get; set; }
         public DbSet<Lend> Lends { get; set; }
 <<<<<<< HEAD
+<<<<<<< HEAD
     
         public virtual ObjectResult<return_card_Result2> return_card(Nullable<int> id_membru)
         {
@@ -48,5 +46,7 @@ namespace BibliotecaN
 =======
         public DbSet<booksView> booksViews { get; set; }
 >>>>>>> a67c77aaf975614773554114d907f6855b8480e3
+=======
+>>>>>>> parent of 26695d7... Library card form
     }
 }

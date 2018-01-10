@@ -77,11 +77,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Biblioteca.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Biblioteca2DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Biblioteca2DataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Book.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
     </Compile>
@@ -91,6 +86,7 @@
     <Compile Include="BookForm.Designer.cs">
       <DependentUpon>BookForm.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <Compile Include="CardForm.cs">
       <SubType>Form</SubType>
@@ -108,6 +104,8 @@
       <DependentUpon>Biblioteca.tt</DependentUpon>
 >>>>>>> a67c77aaf975614773554114d907f6855b8480e3
     </Compile>
+=======
+>>>>>>> parent of 26695d7... Library card form
     <Compile Include="CreateAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,9 +120,6 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GetCardByMemberId_Result.cs">
-      <DependentUpon>Biblioteca.tt</DependentUpon>
     </Compile>
     <Compile Include="Lend.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
@@ -156,15 +151,6 @@
     <Compile Include="Publisher.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
     </Compile>
-    <Compile Include="return_card_Result.cs">
-      <DependentUpon>Biblioteca.tt</DependentUpon>
-    </Compile>
-    <Compile Include="return_card_Result1.cs">
-      <DependentUpon>Biblioteca.tt</DependentUpon>
-    </Compile>
-    <Compile Include="return_card_Result2.cs">
-      <DependentUpon>Biblioteca.tt</DependentUpon>
-    </Compile>
     <Compile Include="Role.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
     </Compile>
@@ -175,6 +161,7 @@
       <DependentUpon>BookForm.cs</DependentUpon>
     </EmbeddedResource>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <EmbeddedResource Include="CardForm.resx">
       <DependentUpon>CardForm.cs</DependentUpon>
 =======
@@ -182,6 +169,8 @@
       <DependentUpon>BookList.cs</DependentUpon>
 >>>>>>> a67c77aaf975614773554114d907f6855b8480e3
     </EmbeddedResource>
+=======
+>>>>>>> parent of 26695d7... Library card form
     <EmbeddedResource Include="CreateAccount.resx">
       <DependentUpon>CreateAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -213,17 +202,6 @@
     <None Include="Biblioteca.edmx.diagram">
       <DependentUpon>Biblioteca.edmx</DependentUpon>
     </None>
-    <None Include="Biblioteca2DataSet.xsc">
-      <DependentUpon>Biblioteca2DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="Biblioteca2DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Biblioteca2DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Biblioteca2DataSet.xss">
-      <DependentUpon>Biblioteca2DataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -236,9 +214,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Biblioteca.Context.tt">

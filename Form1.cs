@@ -17,8 +17,9 @@ namespace BibliotecaN
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)     //creare cont utilizator
+        private void button2_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
 <<<<<<< HEAD
            // this.Close();
             var createAcc = new CreateAccount(); 
@@ -32,10 +33,18 @@ namespace BibliotecaN
                 this.Close();
             }
 >>>>>>> a67c77aaf975614773554114d907f6855b8480e3
+=======
+            using (var db = new BibliotecaEntities())
+            {
+                this.Close();
+                var createAcc = new CreateAccount();
+                createAcc.Show();
+            }
+>>>>>>> parent of 26695d7... Library card form
         }
 
-        private void button1_Click(object sender, EventArgs e)      //autentificare
-        { 
+        private void button1_Click(object sender, EventArgs e)
+        {
             bool login = false;
             int rol = 0;
             using (var db = new BibliotecaEntities())

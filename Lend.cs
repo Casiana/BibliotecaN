@@ -19,7 +19,6 @@ namespace BibliotecaN
         public int Person_ID { get; set; }
         public System.DateTime Data_Imprumut { get; set; }
         public System.DateTime Data_Retur { get; set; }
-        public Nullable<int> Stare_Imprumut { get; set; }
     
         public virtual Book Book { get; set; }
         public virtual Person Person { get; set; }
