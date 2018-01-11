@@ -12,7 +12,7 @@ namespace BibliotecaN
 {
     public partial class MemberInformation : Form
     {
-        public int id;
+       
         public MembruForm root;
         public MemberInformation(MembruForm rooT)
         {
@@ -42,9 +42,8 @@ namespace BibliotecaN
             using (var db = new BibliotecaEntities())
             {
                 var user = (from p in db.People
-                            where p.ID == id
+                            where p.ID == root.id
                             select p).First();
-                labelID.Text = user.ID.ToString();
                 labelUsername.Text = user.Utilizator.ToString();
                 labelName.Text = user.Nume.ToString() + " " + user.Prenume.ToString();
                 labelCNP.Text = user.CNP.ToString();
@@ -67,6 +66,21 @@ namespace BibliotecaN
             {
                 MessageBox.Show(ex.Message);
             }
+
+        }
+
+        private void labelCNP_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelContactNo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
 
         }
     }

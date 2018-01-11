@@ -26,8 +26,7 @@ namespace BibliotecaN
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var memberInfo = new MemberInformation(this);
-            memberInfo.id = this.id;
+            var memberInfo = new MemberInformation(this);      
             memberInfo.ShowDialog();
             
 
@@ -46,7 +45,6 @@ namespace BibliotecaN
         {
             this.Hide();
             var memberSettings = new MemberSettings(this);
-            memberSettings.id = id;
             memberSettings.ShowDialog();
             //this.close();
 
@@ -58,6 +56,19 @@ namespace BibliotecaN
             var bookList = new BookList(this);
             bookList.ShowDialog();
             //this.Close();
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSolicitaSchimb_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var req = new MemberRequestChange(this);
+            req.ShowDialog();
+            
         }
     }
 }

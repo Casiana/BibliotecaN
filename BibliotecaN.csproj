@@ -35,6 +35,25 @@
     <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -42,6 +61,7 @@
     <Reference Include="System.Messaging" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -77,6 +97,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Biblioteca.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Biblioteca2DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Biblioteca2DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Book.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
     </Compile>
@@ -95,6 +120,24 @@
     <Compile Include="booksView.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
     </Compile>
+    <Compile Include="cauta_dupa_autor_Result.cs">
+      <DependentUpon>Biblioteca.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cauta_dupa_domeniu_Result.cs">
+      <DependentUpon>Biblioteca.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cauta_dupa_editura_Result.cs">
+      <DependentUpon>Biblioteca.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cauta_dupa_titlu_Result.cs">
+      <DependentUpon>Biblioteca.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmareTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfirmareTransfer.Designer.cs">
+      <DependentUpon>ConfirmareTransfer.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +153,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormBorrowList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBorrowList.Designer.cs">
+      <DependentUpon>FormBorrowList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lend.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
     </Compile>
@@ -118,6 +167,12 @@
     </Compile>
     <Compile Include="MemberInformation.Designer.cs">
       <DependentUpon>MemberInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemberRequestChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemberRequestChange.Designer.cs">
+      <DependentUpon>MemberRequestChange.cs</DependentUpon>
     </Compile>
     <Compile Include="MemberSettings.cs">
       <SubType>Form</SubType>
@@ -143,6 +198,10 @@
     <Compile Include="Role.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
     </Compile>
+    <Compile Include="Schimb.cs">
+      <DependentUpon>Biblioteca.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="AdministratorForm.resx">
       <DependentUpon>AdministratorForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -152,14 +211,23 @@
     <EmbeddedResource Include="BookList.resx">
       <DependentUpon>BookList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConfirmareTransfer.resx">
+      <DependentUpon>ConfirmareTransfer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateAccount.resx">
       <DependentUpon>CreateAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormBorrowList.resx">
+      <DependentUpon>FormBorrowList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MemberInformation.resx">
       <DependentUpon>MemberInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemberRequestChange.resx">
+      <DependentUpon>MemberRequestChange.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MemberSettings.resx">
       <DependentUpon>MemberSettings.cs</DependentUpon>
@@ -175,6 +243,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EntityDeploy Include="Biblioteca.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -182,6 +251,17 @@
     </EntityDeploy>
     <None Include="Biblioteca.edmx.diagram">
       <DependentUpon>Biblioteca.edmx</DependentUpon>
+    </None>
+    <None Include="Biblioteca2DataSet.xsc">
+      <DependentUpon>Biblioteca2DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Biblioteca2DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Biblioteca2DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Biblioteca2DataSet.xss">
+      <DependentUpon>Biblioteca2DataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -198,15 +278,29 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\1.jpg" />
     <Content Include="Biblioteca.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Biblioteca.Context.cs</LastGenOutput>
       <DependentUpon>Biblioteca.edmx</DependentUpon>
+      <LastGenOutput>Biblioteca.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Biblioteca.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Biblioteca.edmx</DependentUpon>
       <LastGenOutput>Biblioteca.cs</LastGenOutput>
+    </Content>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

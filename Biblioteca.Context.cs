@@ -12,6 +12,9 @@ namespace BibliotecaN
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Objects;
+    using System.Data.Objects.DataClasses;
+    using System.Linq;
     
     public partial class BibliotecaEntities : DbContext
     {
@@ -25,13 +28,50 @@ namespace BibliotecaN
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Person> People { get; set; }
-        public DbSet<Role> Roles { get; set; }
         public DbSet<Author> Authors { get; set; }
-        public DbSet<Domain> Domains { get; set; }
-        public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Book> Books { get; set; }
+        public DbSet<Domain> Domains { get; set; }
         public DbSet<Lend> Lends { get; set; }
+        public DbSet<Person> People { get; set; }
+        public DbSet<Publisher> Publishers { get; set; }
+        public DbSet<Role> Roles { get; set; }
         public DbSet<booksView> booksViews { get; set; }
+        public DbSet<Schimb> Schimbs { get; set; }
+    
+        public virtual ObjectResult<cauta_dupa_autor_Result> cauta_dupa_autor(string name)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<cauta_dupa_autor_Result>("cauta_dupa_autor", nameParameter);
+        }
+    
+        public virtual ObjectResult<cauta_dupa_domeniu_Result> cauta_dupa_domeniu(string name)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<cauta_dupa_domeniu_Result>("cauta_dupa_domeniu", nameParameter);
+        }
+    
+        public virtual ObjectResult<cauta_dupa_editura_Result> cauta_dupa_editura(string name)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<cauta_dupa_editura_Result>("cauta_dupa_editura", nameParameter);
+        }
+    
+        public virtual ObjectResult<cauta_dupa_titlu_Result> cauta_dupa_titlu(string name)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<cauta_dupa_titlu_Result>("cauta_dupa_titlu", nameParameter);
+        }
     }
 }

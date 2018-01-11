@@ -59,6 +59,7 @@ namespace BibliotecaN
                                      select p.ID).First();
                         membru.ShowDialog();
                         this.Close();
+                      
                     }
                     if (rol == 2)
                     {

@@ -10,18 +10,15 @@
 namespace BibliotecaN
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Lend
+    public partial class cauta_dupa_autor_Result
     {
-        public int ID { get; set; }
-        public int Book_ID { get; set; }
-        public int Person_ID { get; set; }
-        public System.DateTime Data_Imprumut { get; set; }
-        public System.DateTime Data_Retur { get; set; }
-        public Nullable<int> Stare_Imprumut { get; set; }
-    
-        public virtual Book Book { get; set; }
-        public virtual Person Person { get; set; }
+        public string Nume { get; set; }
+        public string Prenume { get; set; }
+        public string Titlu { get; set; }
+        public string Domeniu { get; set; }
+        public string Autor { get; set; }
+        public string Editura { get; set; }
+        public int Exemplare { get; set; }
     }
 }

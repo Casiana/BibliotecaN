@@ -12,16 +12,12 @@ namespace BibliotecaN
     using System;
     using System.Collections.Generic;
     
-    public partial class Lend
+    public partial class Schimb
     {
         public int ID { get; set; }
-        public int Book_ID { get; set; }
-        public int Person_ID { get; set; }
-        public System.DateTime Data_Imprumut { get; set; }
-        public System.DateTime Data_Retur { get; set; }
-        public Nullable<int> Stare_Imprumut { get; set; }
-    
-        public virtual Book Book { get; set; }
-        public virtual Person Person { get; set; }
+        public int ID_Solicitant { get; set; }
+        public int ID_Destinatar { get; set; }
+        public int ID_CARTE { get; set; }
+        public int Accept_destinatar { get; set; }
     }
 }

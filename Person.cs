@@ -29,7 +29,7 @@ namespace BibliotecaN
         public string Parola { get; set; }
         public int Rol { get; set; }
     
-        public virtual Role Role { get; set; }
         public virtual ICollection<Lend> Lends { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

@@ -37,6 +37,7 @@
     <Property Name="Person_ID" Type="int" Nullable="false" />
     <Property Name="Data_Imprumut" Type="datetime" Nullable="false" />
     <Property Name="Data_Retur" Type="datetime" Nullable="false" />
+    <Property Name="Stare_Imprumut" Type="int" />
   </EntityType>
   <EntityType Name="Person">
     <Key>
@@ -65,6 +66,16 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nume" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Schimb">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Solicitant" Type="int" Nullable="false" />
+    <Property Name="ID_Destinatar" Type="int" Nullable="false" />
+    <Property Name="ID_CARTE" Type="int" Nullable="false" />
+    <Property Name="Accept_destinatar" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'Biblioteca2.dbo.booksView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -154,6 +165,18 @@ warning 6002: The table/view 'Biblioteca2.dbo.booksView' does not have a primary
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="cauta_dupa_autor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="cauta_dupa_domeniu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="cauta_dupa_editura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="cauta_dupa_titlu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="varchar" Mode="In" />
+  </Function>
   <EntityContainer Name="BibliotecaModelStoreContainer">
     <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
@@ -162,6 +185,7 @@ warning 6002: The table/view 'Biblioteca2.dbo.booksView' does not have a primary
     <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Publisher" EntityType="Self.Publisher" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Schimb" EntityType="Self.Schimb" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="booksView" EntityType="Self.booksView" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
 [booksView].[ID] AS [ID], 
