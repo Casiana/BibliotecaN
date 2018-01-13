@@ -15,24 +15,16 @@ namespace BibliotecaN
 using System;
     using System.Collections.Generic;
     
-public partial class Publisher
+public partial class raport_view1
 {
-
-    public Publisher()
-    {
-
-        this.Books = new HashSet<Book>();
-
-    }
-
-
-    public int ID { get; set; }
 
     public string Nume { get; set; }
 
+    public string Prenume { get; set; }
 
+    public int Book_ID { get; set; }
 
-    public virtual ICollection<Book> Books { get; set; }
+    public string Titlu { get; set; }
 
 }
 

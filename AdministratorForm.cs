@@ -34,9 +34,10 @@ namespace BibliotecaN
                 List<string> books = new List<string>();
                 var query = from m in db.People
                             where m.Rol == 1 select m;
+                
                 foreach (var item in query)
                 {
-                    members.Add(item.Nume + " " + item.Prenume);
+                    members.Add(item.Nume + " " + item.Prenume + " " + "("+ item.Utilizator+")");
                 }
 
                 var query2 = from b in db.Books
@@ -54,40 +55,106 @@ namespace BibliotecaN
 
         private void add_domain_Click(object sender, EventArgs e)
         {
-            using (var db = new BibliotecaEntities())
+            try
             {
-                var domain = new Domain();
-                domain.Nume = domain_text.Text;
-                db.Domains.Add(domain);
-                db.SaveChanges();
-                domain_text.Text = "";
-                MessageBox.Show("Domeniu creat cu success!");
+                using (var db = new BibliotecaEntities())
+                {
+                    if (String.IsNullOrEmpty(domain_text.Text))
+                        MessageBox.Show("Va rugam sa introduceti numele domeniului.");
+                    else
+                    {
+                        var test = (from b in db.Domains
+                                    where b.Nume == domain_text.Text
+                                    select b.Nume).FirstOrDefault();
+
+                        if (String.IsNullOrEmpty(test))
+                        {
+                            var domain = new Domain();
+                            domain.Nume = domain_text.Text;
+                            db.Domains.Add(domain);
+                            db.SaveChanges();
+                            domain_text.Text = "";
+                            MessageBox.Show("Domeniu creat cu success!");
+                        }
+
+                        else
+                            MessageBox.Show("Domeniul deja exista.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("A avut loc o eroare la adaugarea domeniului. Vă rugăm să încercaţi din nou.");
             }
         }
 
         private void add_author_Click(object sender, EventArgs e)
         {
-            using (var db = new BibliotecaEntities())
+            try
             {
-                var autor = new Author();
-                autor.Nume = author_text.Text;
-                db.Authors.Add(autor);
-                db.SaveChanges();
-                author_text.Text = "";
-                MessageBox.Show("Autor creat cu success!");
+                using (var db = new BibliotecaEntities())
+                {
+                    if (String.IsNullOrEmpty(author_text.Text))
+                        MessageBox.Show("Va rugam sa introduceti numele autorului.");
+                    else
+                    {
+                        var test = (from b in db.Authors
+                                    where b.Nume == author_text.Text
+                                    select b.Nume).FirstOrDefault();
+
+                        if (String.IsNullOrEmpty(test))
+                        {
+                            var autor = new Author();
+                            autor.Nume = author_text.Text;
+                            db.Authors.Add(autor);
+                            db.SaveChanges();
+                            author_text.Text = "";
+                            MessageBox.Show("Autor creat cu success!");
+                        }
+
+                        else
+                            MessageBox.Show("Autorul deja exista.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("A avut loc o eroare la adaugarea autorului. Vă rugăm să încercaţi din nou.");
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (var db = new BibliotecaEntities())
+            try
             {
-                var publisher = new Publisher();
-                publisher.Nume = publisher_text.Text;
-                db.Publishers.Add(publisher);
-                db.SaveChanges();
-                publisher_text.Text = "";
-                MessageBox.Show("Editura creata cu success!");
+                using (var db = new BibliotecaEntities())
+                {
+                    if (String.IsNullOrEmpty(publisher_text.Text))
+                        MessageBox.Show("Va rugam sa introduceti numele editurii.");
+
+                    else
+                    {
+                        var test = (from b in db.Publishers
+                                    where b.Nume == publisher_text.Text
+                                    select b.Nume).FirstOrDefault();
+
+                        if (String.IsNullOrEmpty(test))
+                        {
+                            var publisher = new Publisher();
+                            publisher.Nume = publisher_text.Text;
+                            db.Publishers.Add(publisher);
+                            db.SaveChanges();
+                            publisher_text.Text = "";
+                            MessageBox.Show("Editura creata cu success!");
+                        }
+                        else
+                            MessageBox.Show("Editura deja exista.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("A avut loc o eroare la adaugarea editurii. Vă rugăm să încercaţi din nou.");
             }
         }
 
@@ -105,32 +172,40 @@ namespace BibliotecaN
 
         private void button2_Click(object sender, EventArgs e)
         {
-            using (var db = new BibliotecaEntities())
+            try
             {
-                var imprumut = new Lend();
-                var titlu = carte_combo.SelectedItem.ToString();
-                var nume = membru_combo.SelectedItem.ToString().Split().FirstOrDefault();
-                var result = (from b in db.Books
-                              where b.Titlu == titlu
-                              select b).SingleOrDefault();
-                if (result.Exemplare == 0)
-                { 
-                    MessageBox.Show("Nu mai sunt carti disponibile ");
-                    return;
-                }
-                result.Exemplare = result.Exemplare - 1;
-                imprumut.Book = result;
-                var result2 = (from d in db.People
-                               where d.Nume == nume
-                               select d).SingleOrDefault();
-                imprumut.Person = result2;
-                imprumut.Data_Imprumut = DateTime.Now;
-                imprumut.Data_Retur = DateTime.Now.AddDays(30);
-                imprumut.Stare_Imprumut = 1;
-                db.Lends.Add(imprumut);
-                db.SaveChanges();
+                using (var db = new BibliotecaEntities())
+                {
+                    var imprumut = new Lend();
+                    var titlu = carte_combo.SelectedItem.ToString();
+                    var nume = membru_combo.SelectedItem.ToString().Split().FirstOrDefault();
+                    var result = (from b in db.Books
+                                  where b.Titlu == titlu
+                                  select b).SingleOrDefault();
+                    if (result.Exemplare == 0)
+                    {
+                        MessageBox.Show("Nu mai sunt carti disponibile ");
+                        return;
+                    }
+                    result.Exemplare = result.Exemplare - 1;
+                    imprumut.Book = result;
+                    var result2 = (from d in db.People
+                                   where d.Nume == nume
+                                   select d).FirstOrDefault();
+                    imprumut.Person = result2;
+                    imprumut.Data_Imprumut = DateTime.Now;
+                    imprumut.Data_Retur = DateTime.Now.AddDays(30);
+                    imprumut.Stare_Imprumut = 1;
+                    db.Lends.Add(imprumut);
+                    db.SaveChanges();
 
-                MessageBox.Show("Imprumut adaugat cu success!");
+                    MessageBox.Show("Imprumut adaugat cu success!");
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("A avut loc o eroare la adaugarea imprumutului. Vă rugăm să încercaţi din nou.");
             }
         }
 
@@ -142,52 +217,57 @@ namespace BibliotecaN
 
         private void button_retur_Click(object sender, EventArgs e)
         {
-            using (var db = new BibliotecaEntities())
+            try
             {
-                var titlu = carte_combo.SelectedItem.ToString();
-                var nume = membru_combo.SelectedItem.ToString();
-
-                int book_id = (from b in db.Books
-                               where b.Titlu == titlu
-                               select b.ID).SingleOrDefault();
-
-                String[] member_name = nume.Split(' ');
-
-                String nume0 = member_name[0];
-                String nume1 = member_name[1];
-
-                int member_id = (from b in db.People
-                                 where b.Nume == nume0 && b.Prenume == nume1 && b.Rol == 1
-                                 select b.ID).SingleOrDefault();
-
-                var rowToUpdate = db.Lends.Where(o => (o.Book_ID == book_id)).Where(o => (o.Person_ID == member_id));
-                if (rowToUpdate.Any())
+                using (var db = new BibliotecaEntities())
                 {
-                    foreach (var item in rowToUpdate)
+                    var titlu = carte_combo.SelectedItem.ToString();
+                    var nume = membru_combo.SelectedItem.ToString();
+
+                    int book_id = (from b in db.Books
+                                   where b.Titlu == titlu
+                                   select b.ID).SingleOrDefault();
+
+                    String[] member_name = nume.Split(' ');
+
+                    String nume0 = member_name[0];
+                    String nume1 = member_name[1];
+
+                    int member_id = (from b in db.People
+                                     where b.Nume == nume0 && b.Prenume == nume1 && b.Rol == 1
+                                     select b.ID).SingleOrDefault();
+
+                    var rowToUpdate = db.Lends.Where(o => (o.Book_ID == book_id)).Where(o => (o.Person_ID == member_id)).Where(o => o.Stare_Imprumut==1);
+                    if (rowToUpdate.Any())
                     {
-                        item.Stare_Imprumut = 0;
+                        foreach (var item in rowToUpdate)
+                        {
+                            item.Stare_Imprumut = 0;
+                        }
+                        MessageBox.Show("Actiune realizata cu succes.");
+
+                        var result = (from b in db.Books
+                                      where b.Titlu == titlu
+                                      select b).SingleOrDefault();
+
+                        result.Exemplare++;
                     }
-                    MessageBox.Show("Actiune realizata cu succes.");
-
-                    var result = (from b in db.Books
-                                  where b.Titlu == titlu
-                                  select b).SingleOrDefault();
-
-                    result.Exemplare++;
+                    else
+                        MessageBox.Show("Va rugam, introduceti date pentru o inregistrare valida.");
+                    db.SaveChanges();
                 }
-                else
-                    MessageBox.Show("Va rugam, introduceti date pentru o inregistrare valida.");
-                db.SaveChanges();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("A avut loc o eroare la adaugarea returu. Vă rugăm să încercaţi din nou.");
             }
         }
 
-        private void AdministratorForm_Load(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)              //raport
         {
-
+            var report_form = new ReportForm();
+            report_form.Show();
         }
     }
 }
-
-
-//raport  
-//carte returnata

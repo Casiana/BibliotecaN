@@ -72,6 +72,31 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nume" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Biblioteca2.dbo.raport_view' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="raport_view">
+          <Key>
+            <PropertyRef Name="Nume" />
+            <PropertyRef Name="Prenume" />
+            <PropertyRef Name="Book_ID" />
+          </Key>
+          <Property Name="Nume" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prenume" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Book_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Biblioteca2.dbo.raport_view1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="raport_view1">
+          <Key>
+            <PropertyRef Name="Nume" />
+            <PropertyRef Name="Prenume" />
+            <PropertyRef Name="Book_ID" />
+          </Key>
+          <Property Name="Nume" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prenume" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Book_ID" Type="int" Nullable="false" />
+          <Property Name="Titlu" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <Association Name="FK_Book_Author">
           <End Role="Author" Type="Self.Author" Multiplicity="0..1" />
           <End Role="Book" Type="Self.Book" Multiplicity="*" />
@@ -155,6 +180,21 @@
           <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Publisher" EntityType="Self.Publisher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="raport_view" EntityType="Self.raport_view" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[raport_view].[Nume] AS [Nume], 
+[raport_view].[Prenume] AS [Prenume], 
+[raport_view].[Book_ID] AS [Book_ID]
+FROM [dbo].[raport_view] AS [raport_view]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="raport_view1" EntityType="Self.raport_view1" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[raport_view1].[Nume] AS [Nume], 
+[raport_view1].[Prenume] AS [Prenume], 
+[raport_view1].[Book_ID] AS [Book_ID], 
+[raport_view1].[Titlu] AS [Titlu]
+FROM [dbo].[raport_view1] AS [raport_view1]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Book_Author" Association="Self.FK_Book_Author">
             <End Role="Author" EntitySet="Author" />
             <End Role="Book" EntitySet="Book" />
@@ -255,6 +295,8 @@
           <FunctionImport Name="return_card" ReturnType="Collection(BibliotecaModel.return_card_Result2)">
           <Parameter Name="id_membru" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="raport_view" EntityType="BibliotecaModel.raport_view" />
+          <EntitySet Name="raport_view1" EntityType="BibliotecaModel.raport_view1" />
         </EntityContainer>
         <EntityType Name="Author">
           <Key>
@@ -396,6 +438,27 @@
           <Property Type="DateTime" Name="Data_Retur" Nullable="false" Precision="23" />
           <Property Type="Int32" Name="Stare_Imprumut" Nullable="true" />
         </ComplexType>
+        <EntityType Name="raport_view">
+          <Key>
+            <PropertyRef Name="Nume" />
+            <PropertyRef Name="Prenume" />
+            <PropertyRef Name="Book_ID" />
+          </Key>
+          <Property Name="Nume" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prenume" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Book_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="raport_view1">
+          <Key>
+            <PropertyRef Name="Nume" />
+            <PropertyRef Name="Prenume" />
+            <PropertyRef Name="Book_ID" />
+          </Key>
+          <Property Name="Nume" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prenume" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Book_ID" Type="Int32" Nullable="false" />
+          <Property Name="Titlu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -487,6 +550,25 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="raport_view">
+            <EntityTypeMapping TypeName="BibliotecaModel.raport_view">
+              <MappingFragment StoreEntitySet="raport_view">
+                <ScalarProperty Name="Book_ID" ColumnName="Book_ID" />
+                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="raport_view1">
+            <EntityTypeMapping TypeName="BibliotecaModel.raport_view1">
+              <MappingFragment StoreEntitySet="raport_view1">
+                <ScalarProperty Name="Titlu" ColumnName="Titlu" />
+                <ScalarProperty Name="Book_ID" ColumnName="Book_ID" />
+                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

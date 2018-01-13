@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CardForm));
             this.dataGrid_membri = new System.Windows.Forms.DataGridView();
             this.Titlu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,11 +49,12 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button_update = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.biblioteca2DataSet = new BibliotecaN.Biblioteca2DataSet();
             this.biblioteca2DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_membri)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.biblioteca2DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.biblioteca2DataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGrid_membri
@@ -67,19 +70,27 @@
             this.Data_imprumut,
             this.Data_returnare,
             this.stare_retur});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Wheat;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGrid_membri.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGrid_membri.EnableHeadersVisualStyles = false;
             this.dataGrid_membri.Location = new System.Drawing.Point(37, 63);
             this.dataGrid_membri.Name = "dataGrid_membri";
             this.dataGrid_membri.ReadOnly = true;
             this.dataGrid_membri.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGrid_membri.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGrid_membri.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGrid_membri.RowTemplate.Height = 24;
             this.dataGrid_membri.Size = new System.Drawing.Size(734, 306);
             this.dataGrid_membri.TabIndex = 0;
@@ -103,7 +114,7 @@
             this.Data_imprumut.HeaderText = "Data imprumut";
             this.Data_imprumut.Name = "Data_imprumut";
             this.Data_imprumut.ReadOnly = true;
-            this.Data_imprumut.Width = 129;
+            this.Data_imprumut.Width = 118;
             // 
             // Data_returnare
             // 
@@ -111,14 +122,14 @@
             this.Data_returnare.HeaderText = "Data de returnare";
             this.Data_returnare.Name = "Data_returnare";
             this.Data_returnare.ReadOnly = true;
-            this.Data_returnare.Width = 150;
+            this.Data_returnare.Width = 137;
             // 
             // stare_retur
             // 
             this.stare_retur.HeaderText = "Stare retur";
             this.stare_retur.Name = "stare_retur";
             this.stare_retur.ReadOnly = true;
-            this.stare_retur.Width = 105;
+            this.stare_retur.Width = 97;
             // 
             // label1
             // 
@@ -130,6 +141,7 @@
             // 
             // textBox_nume_membru
             // 
+            this.textBox_nume_membru.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBox_nume_membru.Location = new System.Drawing.Point(168, 15);
             this.textBox_nume_membru.Name = "textBox_nume_membru";
             this.textBox_nume_membru.Size = new System.Drawing.Size(401, 22);
@@ -137,6 +149,7 @@
             // 
             // button_cautare
             // 
+            this.button_cautare.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_cautare.Location = new System.Drawing.Point(610, 12);
             this.button_cautare.Name = "button_cautare";
             this.button_cautare.Size = new System.Drawing.Size(161, 32);
@@ -166,7 +179,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(300, 401);
+            this.label4.Location = new System.Drawing.Point(274, 401);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 17);
             this.label4.TabIndex = 6;
@@ -175,7 +188,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(554, 401);
+            this.label5.Location = new System.Drawing.Point(551, 401);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(74, 17);
             this.label5.TabIndex = 7;
@@ -183,23 +196,26 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(303, 422);
+            this.textBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.textBox1.Location = new System.Drawing.Point(277, 422);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(166, 22);
             this.textBox1.TabIndex = 8;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(557, 422);
+            this.textBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.textBox2.Location = new System.Drawing.Point(554, 422);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(166, 22);
             this.textBox2.TabIndex = 9;
             // 
             // button_update
             // 
-            this.button_update.Location = new System.Drawing.Point(303, 471);
+            this.button_update.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_update.Location = new System.Drawing.Point(277, 466);
             this.button_update.Name = "button_update";
-            this.button_update.Size = new System.Drawing.Size(149, 48);
+            this.button_update.Size = new System.Drawing.Size(443, 48);
             this.button_update.TabIndex = 10;
             this.button_update.Text = "Update";
             this.button_update.UseVisualStyleBackColor = true;
@@ -208,27 +224,27 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(554, 447);
+            this.label6.Location = new System.Drawing.Point(551, 447);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(104, 17);
             this.label6.TabIndex = 11;
             this.label6.Text = "(MM/DD/YYYY)";
             // 
-            // biblioteca2DataSet
+            // pictureBox1
             // 
-            this.biblioteca2DataSet.DataSetName = "Biblioteca2DataSet";
-            this.biblioteca2DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // biblioteca2DataSetBindingSource
-            // 
-            this.biblioteca2DataSetBindingSource.DataSource = this.biblioteca2DataSet;
-            this.biblioteca2DataSetBindingSource.Position = 0;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(777, 75);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(370, 294);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
             // 
             // CardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 649);
+            this.ClientSize = new System.Drawing.Size(1105, 569);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button_update);
             this.Controls.Add(this.textBox2);
@@ -244,8 +260,8 @@
             this.Name = "CardForm";
             this.Text = "CardForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_membri)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.biblioteca2DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.biblioteca2DataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -269,7 +285,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridViewTextBoxColumn stare_retur;
         private System.Windows.Forms.BindingSource biblioteca2DataSetBindingSource;
-        private Biblioteca2DataSet biblioteca2DataSet;
         private System.Windows.Forms.DataGridView dataGrid_membri;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.DirectoryServices.DirectoryEntry directoryEntry1;
     }
 }

@@ -71,6 +71,8 @@
     <FunctionImport Name="return_card" ReturnType="Collection(BibliotecaModel.return_card_Result2)">
       <Parameter Name="id_membru" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="raport_view" EntityType="BibliotecaModel.raport_view" />
+    <EntitySet Name="raport_view1" EntityType="BibliotecaModel.raport_view1" />
   </EntityContainer>
   <EntityType Name="Author">
     <Key>
@@ -212,4 +214,25 @@
     <Property Type="DateTime" Name="Data_Retur" Nullable="false" Precision="23" />
     <Property Type="Int32" Name="Stare_Imprumut" Nullable="true" />
   </ComplexType>
+  <EntityType Name="raport_view">
+    <Key>
+      <PropertyRef Name="Nume" />
+      <PropertyRef Name="Prenume" />
+      <PropertyRef Name="Book_ID" />
+    </Key>
+    <Property Name="Nume" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Prenume" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Book_ID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="raport_view1">
+    <Key>
+      <PropertyRef Name="Nume" />
+      <PropertyRef Name="Prenume" />
+      <PropertyRef Name="Book_ID" />
+    </Key>
+    <Property Name="Nume" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Prenume" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Book_ID" Type="Int32" Nullable="false" />
+    <Property Name="Titlu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

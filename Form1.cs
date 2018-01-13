@@ -19,48 +19,58 @@ namespace BibliotecaN
 
         private void button2_Click(object sender, EventArgs e)     //creare cont utilizator
         {
-           // this.Close();
             var createAcc = new CreateAccount(); 
             createAcc.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)      //autentificare
-        { 
-            bool login = false;
-            int rol = 0;
-            using (var db = new BibliotecaEntities())
+        {
+            try
             {
-                var query = from p in db.People
-                            select p;
-                foreach (var item in query)
+                bool login = false;
+                int rol = 0;
+                using (var db = new BibliotecaEntities())
                 {
-                    if (item.Utilizator == username.Text)
+                    var query = from p in db.People
+                                select p;
+                    foreach (var item in query)
                     {
-                        if (item.Parola == PasswordHash.GetHashString(password.Text))
+                        if (item.Utilizator == username.Text)
                         {
-                            rol = item.Rol;
-                            login = true;
+                            if (item.Parola == PasswordHash.GetHashString(password.Text))
+                            {
+                                rol = item.Rol;
+                                login = true;
+                            }
                         }
                     }
                 }
+                if (login)
+                {
+                    if (rol == 1)
+                    {
+                        this.Hide();
+                        var membru = new MembruForm();
+                        membru.ShowDialog();
+                        this.Close();
+                    }
+                    if (rol == 2)
+                    {
+                        this.Hide();
+                        var administrator = new AdministratorForm();
+                        administrator.ShowDialog();
+                        this.Close();
+                    }
+                }
+                else
+                    MessageBox.Show("Parola sau Nume de utilizator Incorect");
             }
-            if (login)
+            catch (Exception ex)
             {
-                if (rol == 1)
-                {
-                    this.Close();
-                    var membru = new MembruForm();
-                    membru.Show();
-                }
-                if (rol == 2)
-                {
-                    this.Close();
-                    var administrator = new AdministratorForm();
-                    administrator.Show();
-                }
+                MessageBox.Show("A avut loc o eroare. Vă rugăm să încercaţi din nou.");
             }
-            else
-                MessageBox.Show("Parola sau Nume de utilizator Incorect");
         }
+
+      
     }
 }

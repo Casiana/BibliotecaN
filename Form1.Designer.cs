@@ -34,13 +34,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.username = new System.Windows.Forms.TextBox();
             this.password = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(307, 154);
+            this.button1.Location = new System.Drawing.Point(317, 166);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(196, 37);
+            this.button1.Size = new System.Drawing.Size(173, 47);
             this.button1.TabIndex = 0;
             this.button1.Text = "Autentificare";
             this.button1.UseVisualStyleBackColor = true;
@@ -48,11 +49,11 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(307, 197);
+            this.button2.Location = new System.Drawing.Point(177, 265);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(196, 37);
+            this.button2.Size = new System.Drawing.Size(471, 40);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Creare Utilizator nou";
+            this.button2.Text = "Creare utilizator nou";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -89,11 +90,22 @@
             this.password.Size = new System.Drawing.Size(196, 22);
             this.password.TabIndex = 5;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label3.Location = new System.Drawing.Point(360, 245);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(92, 17);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Esti nou aici?";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(785, 428);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.password);
             this.Controls.Add(this.username);
             this.Controls.Add(this.label2);
@@ -115,6 +127,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox username;
         private System.Windows.Forms.TextBox password;
+        private System.Windows.Forms.Label label3;
     }
 }
 

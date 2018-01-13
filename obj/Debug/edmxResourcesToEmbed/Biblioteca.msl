@@ -86,5 +86,24 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="raport_view">
+      <EntityTypeMapping TypeName="BibliotecaModel.raport_view">
+        <MappingFragment StoreEntitySet="raport_view">
+          <ScalarProperty Name="Book_ID" ColumnName="Book_ID" />
+          <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="raport_view1">
+      <EntityTypeMapping TypeName="BibliotecaModel.raport_view1">
+        <MappingFragment StoreEntitySet="raport_view1">
+          <ScalarProperty Name="Titlu" ColumnName="Titlu" />
+          <ScalarProperty Name="Book_ID" ColumnName="Book_ID" />
+          <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

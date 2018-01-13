@@ -46,7 +46,7 @@ namespace BibliotecaN
                         {
                             var user = new Person();
                             user.Utilizator = username.Text;
-                            user.Parola = PasswordHash.GetHashString(password.Text); // aici pentru securitate
+                            user.Parola = PasswordHash.GetHashString(password.Text);  
                             user.Nume = name.Text;
                             user.Prenume = last_name.Text;
                             user.CNP = cnp.Text;
@@ -64,7 +64,6 @@ namespace BibliotecaN
                     }
                 }
             }
-
 
             catch (Exception ex)
             {
