@@ -35,8 +35,53 @@ namespace BibliotecaN
         public DbSet<Person> People { get; set; }
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<booksView> booksViews { get; set; }
         public DbSet<Schimb> Schimbs { get; set; }
+        public DbSet<booksView> booksViews { get; set; }
+    
+        public virtual ObjectResult<afiseaza_carti_imprumutate_Result> afiseaza_carti_imprumutate(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<afiseaza_carti_imprumutate_Result>("afiseaza_carti_imprumutate", idParameter);
+        }
+    
+        public virtual ObjectResult<afiseaza_carti_imprumutate_autor_Result> afiseaza_carti_imprumutate_autor(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<afiseaza_carti_imprumutate_autor_Result>("afiseaza_carti_imprumutate_autor", idParameter);
+        }
+    
+        public virtual ObjectResult<afiseaza_carti_imprumutate_domeniu_Result> afiseaza_carti_imprumutate_domeniu(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<afiseaza_carti_imprumutate_domeniu_Result>("afiseaza_carti_imprumutate_domeniu", idParameter);
+        }
+    
+        public virtual ObjectResult<afiseaza_carti_imprumutate_editura_Result> afiseaza_carti_imprumutate_editura(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<afiseaza_carti_imprumutate_editura_Result>("afiseaza_carti_imprumutate_editura", idParameter);
+        }
+    
+        public virtual ObjectResult<afiseaza_carti_imprumutate_titlu_Result> afiseaza_carti_imprumutate_titlu(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<afiseaza_carti_imprumutate_titlu_Result>("afiseaza_carti_imprumutate_titlu", idParameter);
+        }
     
         public virtual ObjectResult<cauta_dupa_autor_Result> cauta_dupa_autor(string name)
         {

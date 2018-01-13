@@ -35,6 +35,14 @@
     <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.12.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.12\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
@@ -79,6 +87,21 @@
     <Compile Include="AdministratorForm.Designer.cs">
       <DependentUpon>AdministratorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="afiseaza_carti_imprumutate_autor_Result.cs">
+      <DependentUpon>Biblioteca.tt</DependentUpon>
+    </Compile>
+    <Compile Include="afiseaza_carti_imprumutate_domeniu_Result.cs">
+      <DependentUpon>Biblioteca.tt</DependentUpon>
+    </Compile>
+    <Compile Include="afiseaza_carti_imprumutate_editura_Result.cs">
+      <DependentUpon>Biblioteca.tt</DependentUpon>
+    </Compile>
+    <Compile Include="afiseaza_carti_imprumutate_Result.cs">
+      <DependentUpon>Biblioteca.tt</DependentUpon>
+    </Compile>
+    <Compile Include="afiseaza_carti_imprumutate_titlu_Result.cs">
+      <DependentUpon>Biblioteca.tt</DependentUpon>
+    </Compile>
     <Compile Include="Author.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
     </Compile>
@@ -110,12 +133,6 @@
     </Compile>
     <Compile Include="BookForm.Designer.cs">
       <DependentUpon>BookForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BookList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BookList.Designer.cs">
-      <DependentUpon>BookList.cs</DependentUpon>
     </Compile>
     <Compile Include="booksView.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
@@ -153,11 +170,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormBorrowList.cs">
+    <Compile Include="FormImprumutate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormBorrowList.Designer.cs">
-      <DependentUpon>FormBorrowList.cs</DependentUpon>
+    <Compile Include="FormImprumutate.designer.cs">
+      <DependentUpon>FormImprumutate.cs</DependentUpon>
     </Compile>
     <Compile Include="Lend.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
@@ -207,15 +224,18 @@
     <Compile Include="Schimb.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
     </Compile>
+    <Compile Include="SearchBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchBook.designer.cs">
+      <DependentUpon>SearchBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="AdministratorForm.resx">
       <DependentUpon>AdministratorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BookForm.resx">
       <DependentUpon>BookForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BookList.resx">
-      <DependentUpon>BookList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConfirmareTransfer.resx">
       <DependentUpon>ConfirmareTransfer.cs</DependentUpon>
@@ -226,8 +246,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormBorrowList.resx">
-      <DependentUpon>FormBorrowList.cs</DependentUpon>
+    <EmbeddedResource Include="FormImprumutate.resx">
+      <DependentUpon>FormImprumutate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MemberInformation.resx">
       <DependentUpon>MemberInformation.cs</DependentUpon>
@@ -254,6 +274,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SearchBook.resx">
+      <DependentUpon>SearchBook.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="Biblioteca.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Biblioteca.Designer.cs</LastGenOutput>

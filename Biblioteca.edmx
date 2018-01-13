@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BibliotecaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Biblioteca2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Author">
           <Key>
             <PropertyRef Name="ID" />
@@ -170,6 +170,21 @@ warning 6002: The table/view 'Biblioteca2.dbo.booksView' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="afiseaza_carti_imprumutate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="afiseaza_carti_imprumutate_autor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="afiseaza_carti_imprumutate_domeniu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="afiseaza_carti_imprumutate_editura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="afiseaza_carti_imprumutate_titlu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
         <Function Name="cauta_dupa_autor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="name" Type="varchar" Mode="In" />
         </Function>
@@ -182,7 +197,7 @@ warning 6002: The table/view 'Biblioteca2.dbo.booksView' does not have a primary
         <Function Name="cauta_dupa_titlu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="name" Type="varchar" Mode="In" />
         </Function>
-        <EntityContainer Name="BibliotecaModelStoreContainer">
+        <EntityContainer Name="Biblioteca2ModelStoreContainer">
           <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Domain" EntityType="Self.Domain" Schema="dbo" store:Type="Tables" />
@@ -226,10 +241,11 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
             <End Role="Person" EntitySet="Person" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="BibliotecaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Biblioteca2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Author">
           <Key>
             <PropertyRef Name="ID" />
@@ -308,6 +324,16 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="People" Relationship="Self.FK_Person_Role" FromRole="Role" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="Schimb">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Solicitant" Type="Int32" Nullable="false" />
+          <Property Name="ID_Destinatar" Type="Int32" Nullable="false" />
+          <Property Name="ID_CARTE" Type="Int32" Nullable="false" />
+          <Property Name="Accept_destinatar" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="booksView">
           <Key>
@@ -403,6 +429,7 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
           <EntitySet Name="People" EntityType="Self.Person" />
           <EntitySet Name="Publishers" EntityType="Self.Publisher" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Schimbs" EntityType="Self.Schimb" />
           <EntitySet Name="booksViews" EntityType="Self.booksView" />
           <AssociationSet Name="FK_Book_Author" Association="Self.FK_Book_Author">
             <End Role="Author" EntitySet="Authors" />
@@ -428,23 +455,71 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
             <End Role="Role" EntitySet="Roles" />
             <End Role="Person" EntitySet="People" />
           </AssociationSet>
-          <FunctionImport Name="cauta_dupa_autor" ReturnType="Collection(BibliotecaModel.cauta_dupa_autor_Result)">
-          <Parameter Name="name" Mode="In" Type="String" />
+          <FunctionImport Name="afiseaza_carti_imprumutate" ReturnType="Collection(Biblioteca2Model.afiseaza_carti_imprumutate_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="cauta_dupa_domeniu" ReturnType="Collection(BibliotecaModel.cauta_dupa_domeniu_Result)">
-          <Parameter Name="name" Mode="In" Type="String" />
+          <FunctionImport Name="afiseaza_carti_imprumutate_autor" ReturnType="Collection(Biblioteca2Model.afiseaza_carti_imprumutate_autor_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="cauta_dupa_editura" ReturnType="Collection(BibliotecaModel.cauta_dupa_editura_Result)">
-          <Parameter Name="name" Mode="In" Type="String" />
+          <FunctionImport Name="afiseaza_carti_imprumutate_domeniu" ReturnType="Collection(Biblioteca2Model.afiseaza_carti_imprumutate_domeniu_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="cauta_dupa_titlu" ReturnType="Collection(BibliotecaModel.cauta_dupa_titlu_Result)">
-          <Parameter Name="name" Mode="In" Type="String" />
+          <FunctionImport Name="afiseaza_carti_imprumutate_editura" ReturnType="Collection(Biblioteca2Model.afiseaza_carti_imprumutate_editura_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="Schimbs" EntityType="BibliotecaModel.Schimb" />
+          <FunctionImport Name="afiseaza_carti_imprumutate_titlu" ReturnType="Collection(Biblioteca2Model.afiseaza_carti_imprumutate_titlu_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="cauta_dupa_autor" ReturnType="Collection(Biblioteca2Model.cauta_dupa_autor_Result)">
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="cauta_dupa_domeniu" ReturnType="Collection(Biblioteca2Model.cauta_dupa_domeniu_Result)">
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="cauta_dupa_editura" ReturnType="Collection(Biblioteca2Model.cauta_dupa_editura_Result)">
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="cauta_dupa_titlu" ReturnType="Collection(Biblioteca2Model.cauta_dupa_titlu_Result)">
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="cauta_dupa_autor_Result">
+        <ComplexType Name="afiseaza_carti_imprumutate_Result">
+          <Property Type="String" Name="Titlu" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Prenume" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Domeniu" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Editura" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="Data_Retur" Nullable="false" Precision="23" />
+          <Property Type="String" Name="ISBN" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="afiseaza_carti_imprumutate_autor_Result">
+          <Property Type="String" Name="Titlu" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Domeniu" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Editura" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="Data_Retur" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="afiseaza_carti_imprumutate_domeniu_Result">
+          <Property Type="String" Name="Titlu" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Domeniu" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Editura" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="Data_Retur" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="afiseaza_carti_imprumutate_editura_Result">
+          <Property Type="String" Name="Titlu" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Domeniu" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Editura" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="Data_Retur" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="afiseaza_carti_imprumutate_titlu_Result">
+          <Property Type="String" Name="Titlu" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Domeniu" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Editura" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="Data_Retur" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="cauta_dupa_autor_Result">
           <Property Type="String" Name="Titlu" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Domeniu" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Autor" Nullable="false" MaxLength="50" />
@@ -452,8 +527,6 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
           <Property Type="Int32" Name="Exemplare" Nullable="false" />
         </ComplexType>
         <ComplexType Name="cauta_dupa_domeniu_Result">
-          <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Prenume" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Titlu" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Domeniu" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Autor" Nullable="false" MaxLength="50" />
@@ -461,8 +534,6 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
           <Property Type="Int32" Name="Exemplare" Nullable="false" />
         </ComplexType>
         <ComplexType Name="cauta_dupa_editura_Result">
-          <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Prenume" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Titlu" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Domeniu" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Autor" Nullable="false" MaxLength="50" />
@@ -470,32 +541,20 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
           <Property Type="Int32" Name="Exemplare" Nullable="false" />
         </ComplexType>
         <ComplexType Name="cauta_dupa_titlu_Result">
-          <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Prenume" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Titlu" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Domeniu" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Autor" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Editura" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="Exemplare" Nullable="false" />
         </ComplexType>
-        <EntityType Name="Schimb">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_Solicitant" Type="Int32" Nullable="false" />
-          <Property Name="ID_Destinatar" Type="Int32" Nullable="false" />
-          <Property Name="ID_CARTE" Type="Int32" Nullable="false" />
-          <Property Name="Accept_destinatar" Type="Int32" Nullable="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BibliotecaModelStoreContainer" CdmEntityContainer="BibliotecaEntities">
+        <EntityContainerMapping StorageEntityContainer="Biblioteca2ModelStoreContainer" CdmEntityContainer="BibliotecaEntities">
           <EntitySetMapping Name="Authors">
-            <EntityTypeMapping TypeName="BibliotecaModel.Author">
+            <EntityTypeMapping TypeName="Biblioteca2Model.Author">
               <MappingFragment StoreEntitySet="Author">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Nume" ColumnName="Nume" />
@@ -503,7 +562,7 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Books">
-            <EntityTypeMapping TypeName="BibliotecaModel.Book">
+            <EntityTypeMapping TypeName="Biblioteca2Model.Book">
               <MappingFragment StoreEntitySet="Book">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Titlu" ColumnName="Titlu" />
@@ -518,7 +577,7 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Domains">
-            <EntityTypeMapping TypeName="BibliotecaModel.Domain">
+            <EntityTypeMapping TypeName="Biblioteca2Model.Domain">
               <MappingFragment StoreEntitySet="Domain">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Nume" ColumnName="Nume" />
@@ -526,7 +585,7 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Lends">
-            <EntityTypeMapping TypeName="BibliotecaModel.Lend">
+            <EntityTypeMapping TypeName="Biblioteca2Model.Lend">
               <MappingFragment StoreEntitySet="Lends">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Book_ID" ColumnName="Book_ID" />
@@ -538,7 +597,7 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="People">
-            <EntityTypeMapping TypeName="BibliotecaModel.Person">
+            <EntityTypeMapping TypeName="Biblioteca2Model.Person">
               <MappingFragment StoreEntitySet="Person">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Utilizator" ColumnName="Utilizator" />
@@ -553,7 +612,7 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Publishers">
-            <EntityTypeMapping TypeName="BibliotecaModel.Publisher">
+            <EntityTypeMapping TypeName="Biblioteca2Model.Publisher">
               <MappingFragment StoreEntitySet="Publisher">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Nume" ColumnName="Nume" />
@@ -561,15 +620,26 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="BibliotecaModel.Role">
+            <EntityTypeMapping TypeName="Biblioteca2Model.Role">
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Nume" ColumnName="Nume" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Schimbs">
+            <EntityTypeMapping TypeName="Biblioteca2Model.Schimb">
+              <MappingFragment StoreEntitySet="Schimb">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Solicitant" ColumnName="ID_Solicitant" />
+                <ScalarProperty Name="ID_Destinatar" ColumnName="ID_Destinatar" />
+                <ScalarProperty Name="ID_CARTE" ColumnName="ID_CARTE" />
+                <ScalarProperty Name="Accept_destinatar" ColumnName="Accept_destinatar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="booksViews">
-            <EntityTypeMapping TypeName="BibliotecaModel.booksView">
+            <EntityTypeMapping TypeName="Biblioteca2Model.booksView">
               <MappingFragment StoreEntitySet="booksView">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Titlu" ColumnName="Titlu" />
@@ -580,11 +650,65 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="cauta_dupa_autor" FunctionName="BibliotecaModel.Store.cauta_dupa_autor">
+          <FunctionImportMapping FunctionImportName="afiseaza_carti_imprumutate" FunctionName="Biblioteca2Model.Store.afiseaza_carti_imprumutate">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="BibliotecaModel.cauta_dupa_autor_Result">
+              <ComplexTypeMapping TypeName="Biblioteca2Model.afiseaza_carti_imprumutate_Result">
+                <ScalarProperty Name="Titlu" ColumnName="Titlu" />
                 <ScalarProperty Name="Nume" ColumnName="Nume" />
-                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+                <ScalarProperty Name="Domeniu" ColumnName="Domeniu" />
+                <ScalarProperty Name="Editura" ColumnName="Editura" />
+                <ScalarProperty Name="Data_Retur" ColumnName="Data_Retur" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="afiseaza_carti_imprumutate_autor" FunctionName="Biblioteca2Model.Store.afiseaza_carti_imprumutate_autor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Biblioteca2Model.afiseaza_carti_imprumutate_autor_Result">
+                <ScalarProperty Name="Titlu" ColumnName="Titlu" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Domeniu" ColumnName="Domeniu" />
+                <ScalarProperty Name="Editura" ColumnName="Editura" />
+                <ScalarProperty Name="Data_Retur" ColumnName="Data_Retur" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="afiseaza_carti_imprumutate_domeniu" FunctionName="Biblioteca2Model.Store.afiseaza_carti_imprumutate_domeniu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Biblioteca2Model.afiseaza_carti_imprumutate_domeniu_Result">
+                <ScalarProperty Name="Titlu" ColumnName="Titlu" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Domeniu" ColumnName="Domeniu" />
+                <ScalarProperty Name="Editura" ColumnName="Editura" />
+                <ScalarProperty Name="Data_Retur" ColumnName="Data_Retur" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="afiseaza_carti_imprumutate_editura" FunctionName="Biblioteca2Model.Store.afiseaza_carti_imprumutate_editura">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Biblioteca2Model.afiseaza_carti_imprumutate_editura_Result">
+                <ScalarProperty Name="Titlu" ColumnName="Titlu" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Domeniu" ColumnName="Domeniu" />
+                <ScalarProperty Name="Editura" ColumnName="Editura" />
+                <ScalarProperty Name="Data_Retur" ColumnName="Data_Retur" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="afiseaza_carti_imprumutate_titlu" FunctionName="Biblioteca2Model.Store.afiseaza_carti_imprumutate_titlu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Biblioteca2Model.afiseaza_carti_imprumutate_titlu_Result">
+                <ScalarProperty Name="Titlu" ColumnName="Titlu" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Domeniu" ColumnName="Domeniu" />
+                <ScalarProperty Name="Editura" ColumnName="Editura" />
+                <ScalarProperty Name="Data_Retur" ColumnName="Data_Retur" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="cauta_dupa_autor" FunctionName="Biblioteca2Model.Store.cauta_dupa_autor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Biblioteca2Model.cauta_dupa_autor_Result">
                 <ScalarProperty Name="Titlu" ColumnName="Titlu" />
                 <ScalarProperty Name="Domeniu" ColumnName="Domeniu" />
                 <ScalarProperty Name="Autor" ColumnName="Autor" />
@@ -593,11 +717,9 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="cauta_dupa_domeniu" FunctionName="BibliotecaModel.Store.cauta_dupa_domeniu">
+          <FunctionImportMapping FunctionImportName="cauta_dupa_domeniu" FunctionName="Biblioteca2Model.Store.cauta_dupa_domeniu">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="BibliotecaModel.cauta_dupa_domeniu_Result">
-                <ScalarProperty Name="Nume" ColumnName="Nume" />
-                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+              <ComplexTypeMapping TypeName="Biblioteca2Model.cauta_dupa_domeniu_Result">
                 <ScalarProperty Name="Titlu" ColumnName="Titlu" />
                 <ScalarProperty Name="Domeniu" ColumnName="Domeniu" />
                 <ScalarProperty Name="Autor" ColumnName="Autor" />
@@ -606,11 +728,9 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="cauta_dupa_editura" FunctionName="BibliotecaModel.Store.cauta_dupa_editura">
+          <FunctionImportMapping FunctionImportName="cauta_dupa_editura" FunctionName="Biblioteca2Model.Store.cauta_dupa_editura">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="BibliotecaModel.cauta_dupa_editura_Result">
-                <ScalarProperty Name="Nume" ColumnName="Nume" />
-                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+              <ComplexTypeMapping TypeName="Biblioteca2Model.cauta_dupa_editura_Result">
                 <ScalarProperty Name="Titlu" ColumnName="Titlu" />
                 <ScalarProperty Name="Domeniu" ColumnName="Domeniu" />
                 <ScalarProperty Name="Autor" ColumnName="Autor" />
@@ -619,11 +739,9 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="cauta_dupa_titlu" FunctionName="BibliotecaModel.Store.cauta_dupa_titlu">
+          <FunctionImportMapping FunctionImportName="cauta_dupa_titlu" FunctionName="Biblioteca2Model.Store.cauta_dupa_titlu">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="BibliotecaModel.cauta_dupa_titlu_Result">
-                <ScalarProperty Name="Nume" ColumnName="Nume" />
-                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+              <ComplexTypeMapping TypeName="Biblioteca2Model.cauta_dupa_titlu_Result">
                 <ScalarProperty Name="Titlu" ColumnName="Titlu" />
                 <ScalarProperty Name="Domeniu" ColumnName="Domeniu" />
                 <ScalarProperty Name="Autor" ColumnName="Autor" />
@@ -632,17 +750,6 @@ FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="Schimbs">
-            <EntityTypeMapping TypeName="BibliotecaModel.Schimb">
-              <MappingFragment StoreEntitySet="Schimb">
-                <ScalarProperty Name="Accept_destinatar" ColumnName="Accept_destinatar" />
-                <ScalarProperty Name="ID_CARTE" ColumnName="ID_CARTE" />
-                <ScalarProperty Name="ID_Destinatar" ColumnName="ID_Destinatar" />
-                <ScalarProperty Name="ID_Solicitant" ColumnName="ID_Solicitant" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

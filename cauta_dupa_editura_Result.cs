@@ -13,8 +13,6 @@ namespace BibliotecaN
     
     public partial class cauta_dupa_editura_Result
     {
-        public string Nume { get; set; }
-        public string Prenume { get; set; }
         public string Titlu { get; set; }
         public string Domeniu { get; set; }
         public string Autor { get; set; }

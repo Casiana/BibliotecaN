@@ -11,12 +11,12 @@ namespace BibliotecaN
 {
     using System;
     
-    public partial class cauta_dupa_titlu_Result
+    public partial class afiseaza_carti_imprumutate_autor_Result
     {
         public string Titlu { get; set; }
+        public string Nume { get; set; }
         public string Domeniu { get; set; }
-        public string Autor { get; set; }
         public string Editura { get; set; }
-        public int Exemplare { get; set; }
+        public System.DateTime Data_Retur { get; set; }
     }
 }

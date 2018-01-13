@@ -52,15 +52,14 @@ namespace BibliotecaN
 
         private void buttonBookList_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            var bookList = new BookList(this);
-            bookList.ShowDialog();
-            //this.Close();
+            
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            var searchBook = new FormBookSearch(this);
+            searchBook.ShowDialog();
         }
 
         private void buttonSolicitaSchimb_Click(object sender, EventArgs e)
@@ -78,6 +77,13 @@ namespace BibliotecaN
             confirmareTransfer.ShowDialog();
             //this.Close();
 
+        }
+
+        private void buttonBorrow_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var borrowBooks = new FormImprumutate(this);
+            borrowBooks.ShowDialog();
         }
     }
 }

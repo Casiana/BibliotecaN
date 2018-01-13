@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="BibliotecaModelStoreContainer" CdmEntityContainer="BibliotecaEntities">
+  <EntityContainerMapping StorageEntityContainer="Biblioteca2ModelStoreContainer" CdmEntityContainer="BibliotecaEntities">
     <EntitySetMapping Name="Authors">
-      <EntityTypeMapping TypeName="BibliotecaModel.Author">
+      <EntityTypeMapping TypeName="Biblioteca2Model.Author">
         <MappingFragment StoreEntitySet="Author">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Nume" ColumnName="Nume" />
@@ -10,7 +10,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Books">
-      <EntityTypeMapping TypeName="BibliotecaModel.Book">
+      <EntityTypeMapping TypeName="Biblioteca2Model.Book">
         <MappingFragment StoreEntitySet="Book">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Titlu" ColumnName="Titlu" />
@@ -25,7 +25,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Domains">
-      <EntityTypeMapping TypeName="BibliotecaModel.Domain">
+      <EntityTypeMapping TypeName="Biblioteca2Model.Domain">
         <MappingFragment StoreEntitySet="Domain">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Nume" ColumnName="Nume" />
@@ -33,7 +33,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Lends">
-      <EntityTypeMapping TypeName="BibliotecaModel.Lend">
+      <EntityTypeMapping TypeName="Biblioteca2Model.Lend">
         <MappingFragment StoreEntitySet="Lends">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Book_ID" ColumnName="Book_ID" />
@@ -45,7 +45,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="People">
-      <EntityTypeMapping TypeName="BibliotecaModel.Person">
+      <EntityTypeMapping TypeName="Biblioteca2Model.Person">
         <MappingFragment StoreEntitySet="Person">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Utilizator" ColumnName="Utilizator" />
@@ -60,7 +60,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Publishers">
-      <EntityTypeMapping TypeName="BibliotecaModel.Publisher">
+      <EntityTypeMapping TypeName="Biblioteca2Model.Publisher">
         <MappingFragment StoreEntitySet="Publisher">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Nume" ColumnName="Nume" />
@@ -68,15 +68,26 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Roles">
-      <EntityTypeMapping TypeName="BibliotecaModel.Role">
+      <EntityTypeMapping TypeName="Biblioteca2Model.Role">
         <MappingFragment StoreEntitySet="Role">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Nume" ColumnName="Nume" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Schimbs">
+      <EntityTypeMapping TypeName="Biblioteca2Model.Schimb">
+        <MappingFragment StoreEntitySet="Schimb">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_Solicitant" ColumnName="ID_Solicitant" />
+          <ScalarProperty Name="ID_Destinatar" ColumnName="ID_Destinatar" />
+          <ScalarProperty Name="ID_CARTE" ColumnName="ID_CARTE" />
+          <ScalarProperty Name="Accept_destinatar" ColumnName="Accept_destinatar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="booksViews">
-      <EntityTypeMapping TypeName="BibliotecaModel.booksView">
+      <EntityTypeMapping TypeName="Biblioteca2Model.booksView">
         <MappingFragment StoreEntitySet="booksView">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Titlu" ColumnName="Titlu" />
@@ -87,11 +98,65 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="cauta_dupa_autor" FunctionName="BibliotecaModel.Store.cauta_dupa_autor">
+    <FunctionImportMapping FunctionImportName="afiseaza_carti_imprumutate" FunctionName="Biblioteca2Model.Store.afiseaza_carti_imprumutate">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="BibliotecaModel.cauta_dupa_autor_Result">
+        <ComplexTypeMapping TypeName="Biblioteca2Model.afiseaza_carti_imprumutate_Result">
+          <ScalarProperty Name="Titlu" ColumnName="Titlu" />
           <ScalarProperty Name="Nume" ColumnName="Nume" />
-          <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+          <ScalarProperty Name="Domeniu" ColumnName="Domeniu" />
+          <ScalarProperty Name="Editura" ColumnName="Editura" />
+          <ScalarProperty Name="Data_Retur" ColumnName="Data_Retur" />
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="afiseaza_carti_imprumutate_autor" FunctionName="Biblioteca2Model.Store.afiseaza_carti_imprumutate_autor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Biblioteca2Model.afiseaza_carti_imprumutate_autor_Result">
+          <ScalarProperty Name="Titlu" ColumnName="Titlu" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="Domeniu" ColumnName="Domeniu" />
+          <ScalarProperty Name="Editura" ColumnName="Editura" />
+          <ScalarProperty Name="Data_Retur" ColumnName="Data_Retur" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="afiseaza_carti_imprumutate_domeniu" FunctionName="Biblioteca2Model.Store.afiseaza_carti_imprumutate_domeniu">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Biblioteca2Model.afiseaza_carti_imprumutate_domeniu_Result">
+          <ScalarProperty Name="Titlu" ColumnName="Titlu" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="Domeniu" ColumnName="Domeniu" />
+          <ScalarProperty Name="Editura" ColumnName="Editura" />
+          <ScalarProperty Name="Data_Retur" ColumnName="Data_Retur" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="afiseaza_carti_imprumutate_editura" FunctionName="Biblioteca2Model.Store.afiseaza_carti_imprumutate_editura">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Biblioteca2Model.afiseaza_carti_imprumutate_editura_Result">
+          <ScalarProperty Name="Titlu" ColumnName="Titlu" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="Domeniu" ColumnName="Domeniu" />
+          <ScalarProperty Name="Editura" ColumnName="Editura" />
+          <ScalarProperty Name="Data_Retur" ColumnName="Data_Retur" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="afiseaza_carti_imprumutate_titlu" FunctionName="Biblioteca2Model.Store.afiseaza_carti_imprumutate_titlu">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Biblioteca2Model.afiseaza_carti_imprumutate_titlu_Result">
+          <ScalarProperty Name="Titlu" ColumnName="Titlu" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="Domeniu" ColumnName="Domeniu" />
+          <ScalarProperty Name="Editura" ColumnName="Editura" />
+          <ScalarProperty Name="Data_Retur" ColumnName="Data_Retur" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cauta_dupa_autor" FunctionName="Biblioteca2Model.Store.cauta_dupa_autor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Biblioteca2Model.cauta_dupa_autor_Result">
           <ScalarProperty Name="Titlu" ColumnName="Titlu" />
           <ScalarProperty Name="Domeniu" ColumnName="Domeniu" />
           <ScalarProperty Name="Autor" ColumnName="Autor" />
@@ -100,11 +165,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="cauta_dupa_domeniu" FunctionName="BibliotecaModel.Store.cauta_dupa_domeniu">
+    <FunctionImportMapping FunctionImportName="cauta_dupa_domeniu" FunctionName="Biblioteca2Model.Store.cauta_dupa_domeniu">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="BibliotecaModel.cauta_dupa_domeniu_Result">
-          <ScalarProperty Name="Nume" ColumnName="Nume" />
-          <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+        <ComplexTypeMapping TypeName="Biblioteca2Model.cauta_dupa_domeniu_Result">
           <ScalarProperty Name="Titlu" ColumnName="Titlu" />
           <ScalarProperty Name="Domeniu" ColumnName="Domeniu" />
           <ScalarProperty Name="Autor" ColumnName="Autor" />
@@ -113,11 +176,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="cauta_dupa_editura" FunctionName="BibliotecaModel.Store.cauta_dupa_editura">
+    <FunctionImportMapping FunctionImportName="cauta_dupa_editura" FunctionName="Biblioteca2Model.Store.cauta_dupa_editura">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="BibliotecaModel.cauta_dupa_editura_Result">
-          <ScalarProperty Name="Nume" ColumnName="Nume" />
-          <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+        <ComplexTypeMapping TypeName="Biblioteca2Model.cauta_dupa_editura_Result">
           <ScalarProperty Name="Titlu" ColumnName="Titlu" />
           <ScalarProperty Name="Domeniu" ColumnName="Domeniu" />
           <ScalarProperty Name="Autor" ColumnName="Autor" />
@@ -126,11 +187,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="cauta_dupa_titlu" FunctionName="BibliotecaModel.Store.cauta_dupa_titlu">
+    <FunctionImportMapping FunctionImportName="cauta_dupa_titlu" FunctionName="Biblioteca2Model.Store.cauta_dupa_titlu">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="BibliotecaModel.cauta_dupa_titlu_Result">
-          <ScalarProperty Name="Nume" ColumnName="Nume" />
-          <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+        <ComplexTypeMapping TypeName="Biblioteca2Model.cauta_dupa_titlu_Result">
           <ScalarProperty Name="Titlu" ColumnName="Titlu" />
           <ScalarProperty Name="Domeniu" ColumnName="Domeniu" />
           <ScalarProperty Name="Autor" ColumnName="Autor" />
@@ -139,16 +198,5 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <EntitySetMapping Name="Schimbs">
-      <EntityTypeMapping TypeName="BibliotecaModel.Schimb">
-        <MappingFragment StoreEntitySet="Schimb">
-          <ScalarProperty Name="Accept_destinatar" ColumnName="Accept_destinatar" />
-          <ScalarProperty Name="ID_CARTE" ColumnName="ID_CARTE" />
-          <ScalarProperty Name="ID_Destinatar" ColumnName="ID_Destinatar" />
-          <ScalarProperty Name="ID_Solicitant" ColumnName="ID_Solicitant" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

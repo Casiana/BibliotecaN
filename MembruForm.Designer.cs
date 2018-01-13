@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MembruForm));
             this.buttonMember = new System.Windows.Forms.Button();
-            this.buttonBookList = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonBorrow = new System.Windows.Forms.Button();
             this.buttonSettings = new System.Windows.Forms.Button();
@@ -52,25 +51,12 @@
             this.buttonMember.UseVisualStyleBackColor = false;
             this.buttonMember.Click += new System.EventHandler(this.button1_Click);
             // 
-            // buttonBookList
-            // 
-            this.buttonBookList.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonBookList.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBookList.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonBookList.Location = new System.Drawing.Point(225, 107);
-            this.buttonBookList.Name = "buttonBookList";
-            this.buttonBookList.Size = new System.Drawing.Size(137, 113);
-            this.buttonBookList.TabIndex = 1;
-            this.buttonBookList.Text = "Book List";
-            this.buttonBookList.UseVisualStyleBackColor = false;
-            this.buttonBookList.Click += new System.EventHandler(this.buttonBookList_Click);
-            // 
             // buttonSearch
             // 
             this.buttonSearch.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonSearch.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSearch.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonSearch.Location = new System.Drawing.Point(416, 107);
+            this.buttonSearch.Location = new System.Drawing.Point(304, 107);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(137, 113);
             this.buttonSearch.TabIndex = 2;
@@ -83,12 +69,13 @@
             this.buttonBorrow.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonBorrow.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBorrow.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonBorrow.Location = new System.Drawing.Point(591, 107);
+            this.buttonBorrow.Location = new System.Drawing.Point(566, 107);
             this.buttonBorrow.Name = "buttonBorrow";
             this.buttonBorrow.Size = new System.Drawing.Size(137, 113);
             this.buttonBorrow.TabIndex = 3;
             this.buttonBorrow.Text = "Borrow List";
             this.buttonBorrow.UseVisualStyleBackColor = false;
+            this.buttonBorrow.Click += new System.EventHandler(this.buttonBorrow_Click);
             // 
             // buttonSettings
             // 
@@ -108,7 +95,7 @@
             this.buttonSolicitaSchimb.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonSolicitaSchimb.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSolicitaSchimb.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonSolicitaSchimb.Location = new System.Drawing.Point(225, 265);
+            this.buttonSolicitaSchimb.Location = new System.Drawing.Point(304, 265);
             this.buttonSolicitaSchimb.Name = "buttonSolicitaSchimb";
             this.buttonSolicitaSchimb.Size = new System.Drawing.Size(137, 113);
             this.buttonSolicitaSchimb.TabIndex = 5;
@@ -121,7 +108,7 @@
             this.buttonBookRequest.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonBookRequest.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBookRequest.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonBookRequest.Location = new System.Drawing.Point(416, 265);
+            this.buttonBookRequest.Location = new System.Drawing.Point(566, 265);
             this.buttonBookRequest.Name = "buttonBookRequest";
             this.buttonBookRequest.Size = new System.Drawing.Size(137, 113);
             this.buttonBookRequest.TabIndex = 6;
@@ -134,9 +121,9 @@
             this.buttonLogout.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonLogout.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogout.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonLogout.Location = new System.Drawing.Point(591, 265);
+            this.buttonLogout.Location = new System.Drawing.Point(604, 419);
             this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(137, 113);
+            this.buttonLogout.Size = new System.Drawing.Size(152, 41);
             this.buttonLogout.TabIndex = 7;
             this.buttonLogout.Text = "Logout";
             this.buttonLogout.UseVisualStyleBackColor = false;
@@ -155,7 +142,6 @@
             this.Controls.Add(this.buttonSettings);
             this.Controls.Add(this.buttonBorrow);
             this.Controls.Add(this.buttonSearch);
-            this.Controls.Add(this.buttonBookList);
             this.Controls.Add(this.buttonMember);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
@@ -171,7 +157,6 @@
         #endregion
 
         private System.Windows.Forms.Button buttonMember;
-        private System.Windows.Forms.Button buttonBookList;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Button buttonBorrow;
         private System.Windows.Forms.Button buttonSettings;
