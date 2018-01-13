@@ -51,7 +51,9 @@
             this.textBoxCnp = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.biblioteca2DataSet1 = new BibliotecaN.Biblioteca2DataSet();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.biblioteca2DataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxCurrentPassword
@@ -259,6 +261,11 @@
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             // 
+            // biblioteca2DataSet1
+            // 
+            this.biblioteca2DataSet1.DataSetName = "Biblioteca2DataSet";
+            this.biblioteca2DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // MemberSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -294,6 +301,7 @@
             this.Load += new System.EventHandler(this.MemberSettings_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.biblioteca2DataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -324,5 +332,6 @@
         private System.Windows.Forms.TextBox textBoxCnp;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private Biblioteca2DataSet biblioteca2DataSet1;
     }
 }

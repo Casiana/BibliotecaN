@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Transactions;
 
 namespace BibliotecaN
 {
@@ -34,6 +36,8 @@ namespace BibliotecaN
             // arr[1] = "2";
             using (var db = new BibliotecaEntities())
             {
+                // using(var trans=db.)
+
                 var transfer = db.Schimbs.Where(x => x.ID_Destinatar == root.id && x.Accept_destinatar == 0);
 
                 foreach (var idTransfer in transfer)
@@ -54,6 +58,9 @@ namespace BibliotecaN
                     string username = solicitant.Utilizator.ToString();
                     arr[3] = nume;
                     arr[4] = username;
+
+
+
 
                     itm = new ListViewItem(arr);
                     listView1.Items.Add(itm);

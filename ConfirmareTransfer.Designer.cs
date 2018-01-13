@@ -73,6 +73,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ConfirmareTransfer";
             this.Text = "ConfirmareTransfer";
+            this.Load += new System.EventHandler(this.ConfirmareTransfer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -33,8 +33,10 @@
             this.Titlu = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Autor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ISBN = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Username = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Nume = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Username = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.biblioteca2DataSet1 = new BibliotecaN.Biblioteca2DataSet();
+            ((System.ComponentModel.ISupportInitialize)(this.biblioteca2DataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonBack
@@ -83,15 +85,20 @@
             this.ISBN.Text = "ISBN";
             this.ISBN.Width = 131;
             // 
+            // Nume
+            // 
+            this.Nume.Text = "Nume si prenume";
+            this.Nume.Width = 185;
+            // 
             // Username
             // 
             this.Username.Text = "Username";
             this.Username.Width = 126;
             // 
-            // Nume
+            // biblioteca2DataSet1
             // 
-            this.Nume.Text = "Nume si prenume";
-            this.Nume.Width = 185;
+            this.biblioteca2DataSet1.DataSetName = "Biblioteca2DataSet";
+            this.biblioteca2DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // MemberRequestChange
             // 
@@ -106,6 +113,7 @@
             this.Name = "MemberRequestChange";
             this.Text = "StarBook";
             this.Load += new System.EventHandler(this.MemberRequestChange_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.biblioteca2DataSet1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -118,5 +126,6 @@
         private System.Windows.Forms.ColumnHeader ISBN;
         private System.Windows.Forms.ColumnHeader Username;
         private System.Windows.Forms.ColumnHeader Nume;
+        private Biblioteca2DataSet biblioteca2DataSet1;
     }
 }

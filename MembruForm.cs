@@ -70,5 +70,14 @@ namespace BibliotecaN
             req.ShowDialog();
             
         }
+
+        private void buttonBookRequest_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var confirmareTransfer = new MemberTransferuri(this);
+            confirmareTransfer.ShowDialog();
+            //this.Close();
+
+        }
     }
 }

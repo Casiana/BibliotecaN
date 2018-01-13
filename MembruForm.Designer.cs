@@ -125,8 +125,9 @@
             this.buttonBookRequest.Name = "buttonBookRequest";
             this.buttonBookRequest.Size = new System.Drawing.Size(137, 113);
             this.buttonBookRequest.TabIndex = 6;
-            this.buttonBookRequest.Text = "Book Request";
+            this.buttonBookRequest.Text = "Cereri Transfer";
             this.buttonBookRequest.UseVisualStyleBackColor = false;
+            this.buttonBookRequest.Click += new System.EventHandler(this.buttonBookRequest_Click);
             // 
             // buttonLogout
             // 
