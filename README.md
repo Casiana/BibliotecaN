@@ -17,7 +17,7 @@ SQL SERVER EXPRESS 2017
 
 
 ```
-1. Download the project first.
+1. Download the project from the branch ProiectFinal first.
 2. Configure the database of the library ( make tables and add some entries or just run the script of the database)
 3. Build and Run
 4. Install from NuGet iTextSharp and Microsoft.Office
