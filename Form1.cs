@@ -17,70 +17,67 @@ namespace BibliotecaN
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            using (var db = new BibliotecaEntities())
-            {
-                this.Hide();
-                var createAcc = new CreateAccount();
-                createAcc.ShowDialog();
-                this.Close();
-            }
-        }
+       
 
+    
         private void button1_Click(object sender, EventArgs e)
         {
-            bool login = false;
-            int rol = 0;
-            using (var db = new BibliotecaEntities())
+            try
             {
-                var query = from p in db.People
-                            select p;
-                foreach (var item in query)
+                bool login = false;
+                int rol = 0;
+
+                using (var db = new BibliotecaEntities())
                 {
-                    if (item.Utilizator == username.Text)
+                    var query = from p in db.People
+                                select p;
+                    foreach (var item in query)
                     {
-                        if (item.Parola == PasswordHash.GetHashString(password.Text))
+                        if (item.Utilizator == username.Text)
                         {
-                            rol = item.Rol;
-                            login = true;
+                            if (item.Parola == PasswordHash.GetHashString(password.Text))
+                            {
+                                rol = item.Rol;
+                                login = true;
+                            }
                         }
                     }
-                }
 
-                if (login)
-                {
-                    if (rol == 1)
+                    if (login)
                     {
-                        this.Hide();
-                        var membru = new MembruForm();
-                        membru.id = (from p in db.People
-                                     where p.Utilizator == username.Text
-                                     select p.ID).First();
-                        membru.ShowDialog();
-                        this.Close();
-                      
+                        if (rol == 1)
+                        {
+                            this.Hide();
+                            var membru = new MembruForm();
+                            membru.id = (from p in db.People
+                                         where p.Utilizator == username.Text
+                                         select p.ID).First();
+                            membru.ShowDialog();
+                            this.Close();
+
+                        }
+                        if (rol == 2)
+                        {
+                            this.Hide();
+                            var administrator = new AdministratorForm();
+                            administrator.ShowDialog();
+                            this.Close();
+                        }
                     }
-                    if (rol == 2)
-                    {
-                        this.Hide();
-                        var administrator = new AdministratorForm();
-                        administrator.ShowDialog();
-                        this.Close();
-                    }
+                    else
+                        MessageBox.Show("Parola sau Nume de utilizator Incorect");
                 }
-                else
-                    MessageBox.Show("Parola sau Nume de utilizator Incorect");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("A avut loc o eroare. Vă rugăm să încercaţi din nou.");
             }
         }
-        private void username_TextChanged(object sender, EventArgs e)
+
+        private void button2_Click_1(object sender, EventArgs e)
         {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
+            var createAcc = new CreateAccount();
+            createAcc.Show();
         }
     }
 }

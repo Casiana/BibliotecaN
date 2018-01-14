@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Biblioteca2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="BibliotecaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Author">
     <Key>
       <PropertyRef Name="ID" />
@@ -103,6 +103,27 @@
     <Property Name="Domeniu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Editura" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
+  <EntityType Name="raport_view">
+    <Key>
+      <PropertyRef Name="Nume" />
+      <PropertyRef Name="Prenume" />
+      <PropertyRef Name="Book_ID" />
+    </Key>
+    <Property Name="Nume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Prenume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Book_ID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="raport_view1">
+    <Key>
+      <PropertyRef Name="Nume" />
+      <PropertyRef Name="Prenume" />
+      <PropertyRef Name="Book_ID" />
+    </Key>
+    <Property Name="Nume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Prenume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Book_ID" Type="Int32" Nullable="false" />
+    <Property Name="Titlu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
   <Association Name="FK_Book_Author">
     <End Role="Author" Type="Self.Author" Multiplicity="0..1" />
     <End Role="Book" Type="Self.Book" Multiplicity="*" />
@@ -185,6 +206,8 @@
     <EntitySet Name="Roles" EntityType="Self.Role" />
     <EntitySet Name="Schimbs" EntityType="Self.Schimb" />
     <EntitySet Name="booksViews" EntityType="Self.booksView" />
+    <EntitySet Name="raport_view" EntityType="Self.raport_view" />
+    <EntitySet Name="raport_view1" EntityType="Self.raport_view1" />
     <AssociationSet Name="FK_Book_Author" Association="Self.FK_Book_Author">
       <End Role="Author" EntitySet="Authors" />
       <End Role="Book" EntitySet="Books" />
@@ -209,44 +232,48 @@
       <End Role="Role" EntitySet="Roles" />
       <End Role="Person" EntitySet="People" />
     </AssociationSet>
-    <FunctionImport Name="afiseaza_carti_imprumutate" ReturnType="Collection(Biblioteca2Model.afiseaza_carti_imprumutate_Result)">
+    <FunctionImport Name="afiseaza_carti_imprumutate" ReturnType="Collection(BibliotecaModel.afiseaza_carti_imprumutate_Result)">
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="afiseaza_carti_imprumutate_autor" ReturnType="Collection(Biblioteca2Model.afiseaza_carti_imprumutate_autor_Result)">
+    <FunctionImport Name="afiseaza_carti_imprumutate_autor" ReturnType="Collection(BibliotecaModel.afiseaza_carti_imprumutate_autor_Result)">
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="afiseaza_carti_imprumutate_domeniu" ReturnType="Collection(Biblioteca2Model.afiseaza_carti_imprumutate_domeniu_Result)">
+    <FunctionImport Name="afiseaza_carti_imprumutate_domeniu" ReturnType="Collection(BibliotecaModel.afiseaza_carti_imprumutate_domeniu_Result)">
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="afiseaza_carti_imprumutate_editura" ReturnType="Collection(Biblioteca2Model.afiseaza_carti_imprumutate_editura_Result)">
+    <FunctionImport Name="afiseaza_carti_imprumutate_editura" ReturnType="Collection(BibliotecaModel.afiseaza_carti_imprumutate_editura_Result)">
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="afiseaza_carti_imprumutate_titlu" ReturnType="Collection(Biblioteca2Model.afiseaza_carti_imprumutate_titlu_Result)">
+    <FunctionImport Name="afiseaza_carti_imprumutate_titlu" ReturnType="Collection(BibliotecaModel.afiseaza_carti_imprumutate_titlu_Result)">
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="cauta_dupa_autor" ReturnType="Collection(Biblioteca2Model.cauta_dupa_autor_Result)">
+    <FunctionImport Name="cauta_dupa_autor" ReturnType="Collection(BibliotecaModel.cauta_dupa_autor_Result)">
       <Parameter Name="name" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="cauta_dupa_domeniu" ReturnType="Collection(Biblioteca2Model.cauta_dupa_domeniu_Result)">
+    <FunctionImport Name="cauta_dupa_domeniu" ReturnType="Collection(BibliotecaModel.cauta_dupa_domeniu_Result)">
       <Parameter Name="name" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="cauta_dupa_editura" ReturnType="Collection(Biblioteca2Model.cauta_dupa_editura_Result)">
+    <FunctionImport Name="cauta_dupa_editura" ReturnType="Collection(BibliotecaModel.cauta_dupa_editura_Result)">
       <Parameter Name="name" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="cauta_dupa_titlu" ReturnType="Collection(Biblioteca2Model.cauta_dupa_titlu_Result)">
+    <FunctionImport Name="cauta_dupa_titlu" ReturnType="Collection(BibliotecaModel.cauta_dupa_titlu_Result)">
       <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="return_card" ReturnType="Collection(BibliotecaModel.return_card_Result)">
+      <Parameter Name="id_membru" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="afiseaza_carti_imprumutate_Result">
     <Property Type="String" Name="Titlu" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ISBN" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Domeniu" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Editura" Nullable="false" MaxLength="50" />
     <Property Type="DateTime" Name="Data_Retur" Nullable="false" Precision="23" />
-    <Property Type="String" Name="ISBN" Nullable="true" MaxLength="50" />
   </ComplexType>
   <ComplexType Name="afiseaza_carti_imprumutate_autor_Result">
     <Property Type="String" Name="Titlu" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ISBN" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Domeniu" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Editura" Nullable="false" MaxLength="50" />
@@ -254,6 +281,7 @@
   </ComplexType>
   <ComplexType Name="afiseaza_carti_imprumutate_domeniu_Result">
     <Property Type="String" Name="Titlu" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ISBN" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Domeniu" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Editura" Nullable="false" MaxLength="50" />
@@ -261,6 +289,7 @@
   </ComplexType>
   <ComplexType Name="afiseaza_carti_imprumutate_editura_Result">
     <Property Type="String" Name="Titlu" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ISBN" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Domeniu" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Editura" Nullable="false" MaxLength="50" />
@@ -268,6 +297,7 @@
   </ComplexType>
   <ComplexType Name="afiseaza_carti_imprumutate_titlu_Result">
     <Property Type="String" Name="Titlu" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ISBN" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Domeniu" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Editura" Nullable="false" MaxLength="50" />
@@ -278,6 +308,7 @@
     <Property Type="String" Name="Domeniu" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Autor" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Editura" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descriere" Nullable="true" />
     <Property Type="Int32" Name="Exemplare" Nullable="false" />
   </ComplexType>
   <ComplexType Name="cauta_dupa_domeniu_Result">
@@ -285,6 +316,7 @@
     <Property Type="String" Name="Domeniu" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Autor" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Editura" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descriere" Nullable="true" />
     <Property Type="Int32" Name="Exemplare" Nullable="false" />
   </ComplexType>
   <ComplexType Name="cauta_dupa_editura_Result">
@@ -292,6 +324,7 @@
     <Property Type="String" Name="Domeniu" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Autor" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Editura" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descriere" Nullable="true" />
     <Property Type="Int32" Name="Exemplare" Nullable="false" />
   </ComplexType>
   <ComplexType Name="cauta_dupa_titlu_Result">
@@ -299,6 +332,14 @@
     <Property Type="String" Name="Domeniu" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Autor" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Editura" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descriere" Nullable="true" />
     <Property Type="Int32" Name="Exemplare" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="return_card_Result">
+    <Property Type="String" Name="Titlu" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ISBN" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Data_Imprumut" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Data_Retur" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="Stare_Imprumut" Nullable="true" />
   </ComplexType>
 </Schema>

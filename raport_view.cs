@@ -10,14 +10,12 @@
 namespace BibliotecaN
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class afiseaza_carti_imprumutate_domeniu_Result
+    public partial class raport_view
     {
-        public string Titlu { get; set; }
-        public string ISBN { get; set; }
         public string Nume { get; set; }
-        public string Domeniu { get; set; }
-        public string Editura { get; set; }
-        public System.DateTime Data_Retur { get; set; }
+        public string Prenume { get; set; }
+        public int Book_ID { get; set; }
     }
 }

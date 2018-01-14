@@ -22,6 +22,18 @@ namespace BibliotecaN
 
         public void InitializeDropDowns()
         {
+            autor_combo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            autor_combo.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            autor_combo.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            domain_combo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            domain_combo.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            domain_combo.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            publisher_combo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            publisher_combo.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            publisher_combo.AutoCompleteSource = AutoCompleteSource.ListItems;
+
             using (var db = new BibliotecaEntities())
             {
                 List<string> authors = new List<string>();
@@ -50,50 +62,64 @@ namespace BibliotecaN
                 publisher_combo.DataSource = publishers;
                 autor_combo.DataSource = authors;
                 domain_combo.DataSource = domains;
-
             }
         }
-
 
         private void button1_Click(object sender, EventArgs e)
         {
             OpenFileDialog open = new OpenFileDialog();
             // image filters  
             open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
-
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) 
         {
-            using (var db = new BibliotecaEntities())
+            try
             {
-                var book = new Book();
-                book.Titlu = titluBox.Text;
-                book.ISBN = isbnBox.Text;
-                book.Exemplare = Int32.Parse(exemBox.Text);
-                book.Descriere = descriereBox.Text;
-                var domeniu_text = domain_combo.SelectedItem.ToString();
-                var autor_text = autor_combo.SelectedItem.ToString();
-                var editura_text = publisher_combo.SelectedItem.ToString();
-                var domeniu = (from d in db.Domains
-                               where d.Nume == domeniu_text
-                               select d).FirstOrDefault();
-                book.Domain = domeniu;
+                using (var db = new BibliotecaEntities())
+                {
+                    var book = new Book();
 
-                var autor = (from a in db.Authors
-                             where a.Nume == autor_text
-                             select a).FirstOrDefault();
-                book.Author = autor;
 
-                var editura = (from p in db.Publishers
-                               where p.Nume == editura_text
-                               select p).FirstOrDefault();
-                book.Publisher = editura;
+                   if (String.IsNullOrEmpty(isbnBox.Text) || String.IsNullOrEmpty(titluBox.Text) || String.IsNullOrEmpty(exemBox.Text))
+                        MessageBox.Show("Va rugam sa completati toate campurile.");
+                    else
+                    {
 
-                db.Books.Add(book);
-                db.SaveChanges();
-                this.Close();
-                MessageBox.Show("Carte creata cu success!");
+                    book.Descriere = descriereBox.Text;
+
+                    book.ISBN = isbnBox.Text;
+                    book.Titlu = titluBox.Text;
+                    book.Exemplare = Int32.Parse(exemBox.Text);
+
+                    var domeniu_text = domain_combo.SelectedItem.ToString();         
+                        var autor_text = autor_combo.SelectedItem.ToString();            
+                        var editura_text = publisher_combo.SelectedItem.ToString();     
+                        var domeniu = (from d in db.Domains
+                                       where d.Nume == domeniu_text
+                                       select d).FirstOrDefault();
+                        book.Domain = domeniu;
+
+                        var autor = (from a in db.Authors
+                                     where a.Nume == autor_text
+                                     select a).FirstOrDefault();
+                        book.Author = autor;
+
+                        var editura = (from p in db.Publishers
+                                       where p.Nume == editura_text
+                                       select p).FirstOrDefault();
+                        book.Publisher = editura;
+
+                        db.Books.Add(book);
+                        db.SaveChanges();
+                        this.Close();
+                        MessageBox.Show("Carte creata cu success!");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("A avut loc o eroare. Vă rugăm să încercaţi din nou.");
             }
         }
     }

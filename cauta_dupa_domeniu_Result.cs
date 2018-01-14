@@ -17,6 +17,7 @@ namespace BibliotecaN
         public string Domeniu { get; set; }
         public string Autor { get; set; }
         public string Editura { get; set; }
+        public string Descriere { get; set; }
         public int Exemplare { get; set; }
     }
 }

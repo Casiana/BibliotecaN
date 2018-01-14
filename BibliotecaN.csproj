@@ -31,6 +31,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>book library.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
@@ -66,6 +70,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Messaging" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -84,7 +89,7 @@
     <Compile Include="AdministratorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdministratorForm.Designer.cs">
+    <Compile Include="AdministratorForm.designer.cs">
       <DependentUpon>AdministratorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="afiseaza_carti_imprumutate_autor_Result.cs">
@@ -131,11 +136,17 @@
     <Compile Include="BookForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BookForm.Designer.cs">
+    <Compile Include="BookForm.designer.cs">
       <DependentUpon>BookForm.cs</DependentUpon>
     </Compile>
     <Compile Include="booksView.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CardForm.designer.cs">
+      <DependentUpon>CardForm.cs</DependentUpon>
     </Compile>
     <Compile Include="cauta_dupa_autor_Result.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
@@ -218,6 +229,15 @@
     <Compile Include="Publisher.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
     </Compile>
+    <Compile Include="raport_view.cs">
+      <DependentUpon>Biblioteca.tt</DependentUpon>
+    </Compile>
+    <Compile Include="raport_view1.cs">
+      <DependentUpon>Biblioteca.tt</DependentUpon>
+    </Compile>
+    <Compile Include="return_card_Result.cs">
+      <DependentUpon>Biblioteca.tt</DependentUpon>
+    </Compile>
     <Compile Include="Role.cs">
       <DependentUpon>Biblioteca.tt</DependentUpon>
     </Compile>
@@ -236,6 +256,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BookForm.resx">
       <DependentUpon>BookForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardForm.resx">
+      <DependentUpon>CardForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConfirmareTransfer.resx">
       <DependentUpon>ConfirmareTransfer.cs</DependentUpon>
@@ -321,6 +344,9 @@
       <DependentUpon>Biblioteca.edmx</DependentUpon>
       <LastGenOutput>Biblioteca.cs</LastGenOutput>
     </Content>
+    <Content Include="book library.ico" />
+    <Content Include="giphy.gif" />
+    <None Include="Resources\books-shelf2.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

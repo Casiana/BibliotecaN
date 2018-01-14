@@ -11,13 +11,12 @@ namespace BibliotecaN
 {
     using System;
     
-    public partial class afiseaza_carti_imprumutate_domeniu_Result
+    public partial class return_card_Result
     {
         public string Titlu { get; set; }
         public string ISBN { get; set; }
-        public string Nume { get; set; }
-        public string Domeniu { get; set; }
-        public string Editura { get; set; }
+        public System.DateTime Data_Imprumut { get; set; }
         public System.DateTime Data_Retur { get; set; }
+        public Nullable<int> Stare_Imprumut { get; set; }
     }
 }

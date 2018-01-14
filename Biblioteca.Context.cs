@@ -37,6 +37,8 @@ namespace BibliotecaN
         public DbSet<Role> Roles { get; set; }
         public DbSet<Schimb> Schimbs { get; set; }
         public DbSet<booksView> booksViews { get; set; }
+        public DbSet<raport_view> raport_view { get; set; }
+        public DbSet<raport_view1> raport_view1 { get; set; }
     
         public virtual ObjectResult<afiseaza_carti_imprumutate_Result> afiseaza_carti_imprumutate(Nullable<int> id)
         {
@@ -117,6 +119,15 @@ namespace BibliotecaN
                 new ObjectParameter("name", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<cauta_dupa_titlu_Result>("cauta_dupa_titlu", nameParameter);
+        }
+    
+        public virtual ObjectResult<return_card_Result> return_card(Nullable<int> id_membru)
+        {
+            var id_membruParameter = id_membru.HasValue ?
+                new ObjectParameter("id_membru", id_membru) :
+                new ObjectParameter("id_membru", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<return_card_Result>("return_card", id_membruParameter);
         }
     }
 }

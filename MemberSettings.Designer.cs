@@ -52,6 +52,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.biblioteca2DataSet1 = new BibliotecaN.Biblioteca2DataSet();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.biblioteca2DataSet1)).BeginInit();
             this.SuspendLayout();
@@ -157,11 +158,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(431, 297);
+            this.label4.Location = new System.Drawing.Point(57, 266);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(140, 13);
+            this.label4.Size = new System.Drawing.Size(110, 13);
             this.label4.TabIndex = 13;
-            this.label4.Text = "Enter Current Password";
+            this.label4.Text = "Indroduceți parola";
             // 
             // buttonSchimba
             // 
@@ -246,6 +247,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Location = new System.Drawing.Point(390, 31);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(224, 354);
@@ -281,7 +283,6 @@
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonSchimba2);
             this.Controls.Add(this.buttonSchimba);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.labelConfirm);
@@ -299,6 +300,8 @@
             this.Name = "MemberSettings";
             this.Text = "StarBook";
             this.Load += new System.EventHandler(this.MemberSettings_Load);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.biblioteca2DataSet1)).EndInit();

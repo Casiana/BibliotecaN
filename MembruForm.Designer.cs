@@ -47,7 +47,7 @@
             this.buttonMember.Name = "buttonMember";
             this.buttonMember.Size = new System.Drawing.Size(137, 113);
             this.buttonMember.TabIndex = 0;
-            this.buttonMember.Text = "Member Information";
+            this.buttonMember.Text = "Profilul meu";
             this.buttonMember.UseVisualStyleBackColor = false;
             this.buttonMember.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -60,7 +60,7 @@
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(137, 113);
             this.buttonSearch.TabIndex = 2;
-            this.buttonSearch.Text = "Search Book";
+            this.buttonSearch.Text = "Cauta carte";
             this.buttonSearch.UseVisualStyleBackColor = false;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
@@ -73,7 +73,7 @@
             this.buttonBorrow.Name = "buttonBorrow";
             this.buttonBorrow.Size = new System.Drawing.Size(137, 113);
             this.buttonBorrow.TabIndex = 3;
-            this.buttonBorrow.Text = "Borrow List";
+            this.buttonBorrow.Text = "Cartile mele";
             this.buttonBorrow.UseVisualStyleBackColor = false;
             this.buttonBorrow.Click += new System.EventHandler(this.buttonBorrow_Click);
             // 
@@ -86,7 +86,7 @@
             this.buttonSettings.Name = "buttonSettings";
             this.buttonSettings.Size = new System.Drawing.Size(137, 113);
             this.buttonSettings.TabIndex = 4;
-            this.buttonSettings.Text = "Settings";
+            this.buttonSettings.Text = "Setari";
             this.buttonSettings.UseVisualStyleBackColor = false;
             this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
             // 

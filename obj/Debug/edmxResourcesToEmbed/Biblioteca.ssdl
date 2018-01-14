@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Biblioteca2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="BibliotecaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Author">
     <Key>
       <PropertyRef Name="ID" />
@@ -92,6 +92,31 @@ warning 6002: The table/view 'Biblioteca2.dbo.booksView' does not have a primary
     <Property Name="ISBN" Type="nvarchar" MaxLength="50" />
     <Property Name="Domeniu" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Editura" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Biblioteca2.dbo.raport_view' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="raport_view">
+    <Key>
+      <PropertyRef Name="Nume" />
+      <PropertyRef Name="Prenume" />
+      <PropertyRef Name="Book_ID" />
+    </Key>
+    <Property Name="Nume" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Prenume" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Book_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Biblioteca2.dbo.raport_view1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="raport_view1">
+    <Key>
+      <PropertyRef Name="Nume" />
+      <PropertyRef Name="Prenume" />
+      <PropertyRef Name="Book_ID" />
+    </Key>
+    <Property Name="Nume" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Prenume" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Book_ID" Type="int" Nullable="false" />
+    <Property Name="Titlu" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK_Book_Author">
     <End Role="Author" Type="Self.Author" Multiplicity="0..1" />
@@ -192,7 +217,10 @@ warning 6002: The table/view 'Biblioteca2.dbo.booksView' does not have a primary
   <Function Name="cauta_dupa_titlu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="name" Type="varchar" Mode="In" />
   </Function>
-  <EntityContainer Name="Biblioteca2ModelStoreContainer">
+  <Function Name="return_card" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_membru" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="BibliotecaModelStoreContainer">
     <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Domain" EntityType="Self.Domain" Schema="dbo" store:Type="Tables" />
@@ -210,6 +238,21 @@ warning 6002: The table/view 'Biblioteca2.dbo.booksView' does not have a primary
 [booksView].[Domeniu] AS [Domeniu], 
 [booksView].[Editura] AS [Editura]
 FROM [dbo].[booksView] AS [booksView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="raport_view" EntityType="Self.raport_view" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[raport_view].[Nume] AS [Nume], 
+[raport_view].[Prenume] AS [Prenume], 
+[raport_view].[Book_ID] AS [Book_ID]
+FROM [dbo].[raport_view] AS [raport_view]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="raport_view1" EntityType="Self.raport_view1" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[raport_view1].[Nume] AS [Nume], 
+[raport_view1].[Prenume] AS [Prenume], 
+[raport_view1].[Book_ID] AS [Book_ID], 
+[raport_view1].[Titlu] AS [Titlu]
+FROM [dbo].[raport_view1] AS [raport_view1]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_Book_Author" Association="Self.FK_Book_Author">
       <End Role="Author" EntitySet="Author" />

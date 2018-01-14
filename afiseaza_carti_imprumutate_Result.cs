@@ -14,10 +14,10 @@ namespace BibliotecaN
     public partial class afiseaza_carti_imprumutate_Result
     {
         public string Titlu { get; set; }
+        public string ISBN { get; set; }
         public string Nume { get; set; }
         public string Domeniu { get; set; }
         public string Editura { get; set; }
         public System.DateTime Data_Retur { get; set; }
-        public string ISBN { get; set; }
     }
 }
